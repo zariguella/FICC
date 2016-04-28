@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/149/trunk/obispado/templates/usuarios
+END
+solicitudes.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/solicitudes.html
+END
+recuperar.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/recuperar.html
+END
+login2.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/login2.html
+END
+base_site_reg.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/base_site_reg.html
+END
+base_site.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/base_site.html
+END
+registro.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/149/trunk/obispado/templates/usuarios/registro.html
+END
+settings.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/settings.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/login.html
+END
+base_site_set.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/base_site_set.html
+END
+editar_perfil.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/editar_perfil.html
+END
+base.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/base.html
+END
+reg.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/reg.html
+END
+loginnew.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/133/trunk/obispado/templates/usuarios/loginnew.html
+END
+mensaje.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/mensaje.html
+END
+register.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/107/trunk/obispado/templates/usuarios/register.html
+END

@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Widpy</title>
+<link rel="stylesheet" type="text/css" href="/media/css/style.css" media="screen" />
+<link rel="alternate stylesheet" type="text/css" href="{{ temaurl }}" media="screen" title="themechanged"/>
+<link rel="stylesheet" type="text/css" href="/media/css/modal.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/media/css/menu_pestanha.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/media/css/aasasp.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/media/css/menuderecha.css">
+<link rel="stylesheet" type="text/css" href="/media/css/cajaswidgets.css">
+<link rel="stylesheet" type="text/css" href="/media/css/menuleft.css">
+<script type="text/javascript" src="/media/js/ventana_pestanha.js"></script>
+<script type="text/javascript" src="/media/js/ie5.js"></script>
+<script type="text/javascript" src="/media/js/DropMenu1.js"></script>
+<script type="text/javascript" src="/media/js/styleswitcher.js"></script>
+<script type="text/javascript" src="/media/js/menuleft.js"></script>
+<script type="text/javascript" src="/media/js/XulMenu.js"></script>
+
+
+</head><body>
+<div id="header">
+<!--div id="left"-->
+ 
+<div id="menule">
+
+<ul id="qm0" class="qmmc">
+	{% if superadmin %}
+	<li><a class="qmparent" href="javascript:void(0)">SysAdmin </a>
+
+    <ul>
+		<li><a href="/admin/auth/user/">Usuarios</a></li>
+
+		<li><a href="/admin/">Opciones de Administracion</a></li>
+		
+    </ul>
+	</li>
+	<li><span class="qmdivider qmdividery"></span></li>
+	<li><a class="qmparent" href="javascript:void(0)">Administracion</a>
+
+    <ul>
+		<li><a href="/solicitud/">Solicitudes({{nro_solicitudes}})</a></li>		
+
+		<li><a href="/admin/data/categoria/">Opciones de Categorias</a></li>
+
+		<li><a href="/admin/data/etiqueta/">Opciones de Etiquetas</a></li>
+
+    </ul>
+	</li>
+	
+	<li><span class="qmdivider qmdividery"></span></li>
+	
+	<li><a class="qmparent" href="javascript:void(0)">Desarrollador </a>
+    <ul>
+
+		<li><a href="/admin/data/widget/add/">Registrar Widget</a></li>
+
+		<li><a href="/admin/data/tema/add/">Registrar Tema</a></li>
+
+		<li><a href="/admin/data/widget/">Opciones de Widgets</a></li>
+
+		<li><a href="/admin/data/tema/">Opciones de Temas</a></li>
+
+		
+    </ul>
+  </li>
+	{% endif %}
+	{% if admin %}
+	
+	<li><span class="qmdivider qmdividery"></span></li>
+	<li><a class="qmparent" href="javascript:void(0)">Administracion</a>
+
+		
+    <ul>
+
+		<li><a href="/solicitud/">Solicitudes</a></li>
+
+		<li><a href="/admin/data/categoria/">Opciones de Categorias</a></li>
+
+		<li><a href="/admin/data/etiqueta/">Opciones de Etiquetas</a></li>
+
+    </ul>
+	</li>
+	
+	<li><span class="qmdivider qmdividery"></span></li>
+	
+	<li><a class="qmparent" href="javascript:void(0)">Desarrollador </a>
+    <ul>
+
+		<li><a href="/admin/data/widget/add/">Registrar Widget</a></li>
+
+		<li><a href="/admin/data/tema/add/">Registrar Tema</a></li>
+
+		<li><a href="/admin/data/widget/">Opciones de Widgets</a></li>
+
+		<li><a href="/admin/data/tema/">Opciones de Temas</a></li>
+
+		
+    </ul>
+	</li>
+	{% endif %}
+	
+	{% if desarrollador %}
+	<li><span class="qmdivider qmdividery"></span></li>
+	<li><a class="qmparent" href="javascript:void(0)">Desarrollador </a>
+
+		
+    <ul>
+
+		<li><a href="/admin/data/widget/add/">Registrar Widget</a></li>
+
+		<li><a href="/admin/data/tema/add/">Registrar Tema</a></li>
+
+		<li><a href="/admin/data/widget/">Opciones de Widgets</a></li>
+
+		<li><a href="/admin/data/tema/">Opciones de Temas</a></li>
+
+		
+    </ul>
+  </li>
+	{% endif %}
+	<li><span class="qmdivider qmdividery"></span></li>
+	{% if is_auth %}
+
+	<li><a class="qmparent" href="javascript:void(0)">{{ nombreuser }}</a>
+	{% else %}
+	<li><a class="qmparent" href="javascript:void(0)">guest</a>
+	{% endif %}
+	{% if is_auth %}
+    <ul>
+
+		<li><a href="/editarperfil/">Editar Perfil</a></li>
+
+		{% if not grupo %}
+
+		<li><a href="javascript:solicitudDesarrollador()">Ser Desarrollador</a></li>
+		
+		{% endif %}
+
+		<li><a href="/logout/">Logout</a></li>
+		
+    </ul>
+    {% endif %}
+  </li>
+
+
+	<li><span class="qmdivider qmdividery"></span></li>
+
+	<li><a class="qmparent" href="javascript:void(0)">Opciones</a>
+
+		
+    <ul>
+
+		<li><a href="/inicio/" id="/inicio/">Pagina Principal</a></li>
+		{% if not es_buscado %} 
+		<li><a href="/search/?b=w" id="/search/">Buscar Items</a></li>
+		{% endif %}	
+		<li><a href="javascript:agregarPestanha();">Agregar Pesta&ntilde;a</a></li>
+		
+    </ul>
+    
+    
+ 
+    {% if not is_auth %}
+		<li><a class="qmparent"href="/login/" id="/login/">Registrarse</a>
+		<li><a class="qmparent"href="/login/" id="/login/">Acceder</a>
+
+	{% endif %}
+
+  </li>
+
+
+
+
+  <li class="qmclear">&nbsp;</li>
+</ul>
+
+
+<script type="text/javascript">qm_create(0,false,0,500,false,false,false,false,false);</script><!--[END-QM0]-->
+
+</div>
+<!--/div-->
+<script type="text/javascript" src="/media/js/modelocolumna.js"></script>
+<script type="text/javascript" src="/media/js/cajaswidget.js"></script>
+
+<script type="text/javascript">
+
+function iniciarCajasWidgetScript()
+{
+	crearColumnas('{{ cantidadcolumna }}','{{ modelo }}'); // Crea las columnas necesarias que contendra los contenedores o cajas para cada widget
+	{% for data in widgetdatos %}
+         crearCajaWidget({{ data.nrocolumna }},{{ data.altura }},"{{ data.widget.url }}","{{ data.widget.nombre_widget }}",{{ data.widget.id }},{{ data.nrocajacontenedora }},"{{ data.color }}");
+    {% endfor %}	
+}
+
+window.onload = iniciarCajasWidgetScript;
+
+</script>
+
+</head>
+
+<body>
+	
+
+<div id="containermenu">
+
+<div id="container">
+<div id="header">
+<div id="headermenu">
+<a href="/inicio" ><img name="logo" src="/media/img/logo.png" border="0" height="100" width="100"></a>
+
+</div>
+ <div id="menu">
+  <ul id="nav">
+   <div class="dm1" id="menu1">
+	{% if is_auth %}
+		{% for p in pes %}
+					{% ifequal tabactual p.id %}
+						
+						<li><a href="/gt/{{ p.id }}" id="/gt/">*{{ p.nombre }}*<id="menu1-2" class="item1" >▼</id></a>
+						<div id="menu1-2-section" style="width: 134px; top: 36px; left: 367px; visibility: hidden; z-index: -1;" class="section">
+						<a id="menu1-2-0" class="item2" 
+						href="javascript:cambiarNombre({{ p.id }});">Cambiar Nombre</a>
+						<a id="menu1-2-1" class="item2" 
+						href="javascript:mostrar_editpestanha();">Editar Pesta&ntilde;a</a>
+						{% if cant_pes %}
+							<a id="menu1-2-2" class="item2" 
+							href="javascript:eliminarpes({{ p.id }});">Borrar Pesta&ntilde;a</a>
+						{% endif %}
+						<!--a id="menu1-2-2" class="item2" 
+						href="http://home">Opcion3</a-->
+						</li>
+						</td>
+
+					{% else %}
+						<li><a href="/gt/{{ p.id }}" id="/gt/">{{ p.nombre }} <id="menu1-2" class="item1" >▼</id></a>
+						<div id="menu1-2-section" style="width: 134px; top: 36px; left: 367px; visibility: hidden; z-index: -1;" class="section">
+						<a id="menu1-2-0" class="item2" 
+						href="javascript:cambiarNombre({{ p.id }});">Cambiar Nombre</a>
+						<a id="menu1-2-1" class="item2" 
+						href="javascript:cambiarNombre({{ p.id }});">Editar Pesta&ntilde;a</a>
+						{% if cant_pes %}
+							<a id="menu1-2-2" class="item2" 
+							href="javascript:eliminarpes({{ p.id }});">Borrar Pesta&ntilde;a</a>
+						{% endif %}
+						<!--a id="menu1-2-2" class="item2" 
+						href="http://home">Opcion3</a-->
+						</li>
+					
+					{% endifequal %}
+		{% endfor %}
+	{% else %}
+		{% for p in pes %}
+					{% ifequal tabactual p %}
+						<li><a href="/gt/{{ forloop.counter }}" id="/gt/">*{{ p }}*<id="menu1-2" class="item1" >▼</id></a>
+						<div id="menu1-2-section" style="width: 134px; top: 36px; left: 367px; visibility: hidden; z-index: -1;" class="section">
+						<a id="menu1-2-0" class="item2" 
+						href="javascript:cambiarNombre({{ forloop.counter }});">Cambiar Nombre</a>
+						<a id="menu1-2-1" class="item2" 
+						href="javascript:mostrar_editpestanha();">Editar Pesta&ntilde;a</a>
+						{% if cant_pes %}
+							<a id="menu1-2-2" class="item2" 
+							href="javascript:eliminarpes({{ forloop.counter }});">Borrar Pesta&ntilde;a</a>
+						{% endif %}
+						<!--a id="menu1-2-2" class="item2" 
+						href="http://home">Opcion3</a-->
+						</li>
+						</td>
+
+					{% else %}
+						<li><a href="/gt/{{ forloop.counter }}" id="/gt/">{{ p }} <id="menu1-2" class="item1" >▼</id></a>
+						<div id="menu1-2-section" style="width: 134px; top: 36px; left: 367px; visibility: hidden; z-index: -1;" class="section">
+						<a id="menu1-2-0" class="item2" 
+						href="javascript:cambiarNombre({{ forloop.counter }});">Cambiar Nombre</a>
+						<a id="menu1-2-1" class="item2" 
+						href="javascript:cambiarNombre({{ forloop.counter }});">Editar Pesta&ntilde;a</a>
+						{% if cant_pes %}
+							<a id="menu1-2-2" class="item2" 
+							href="javascript:eliminarpes({{ forloop.counter }});">Borrar Pesta&ntilde;a</a>
+						{% endif %}
+						<!--a id="menu1-2-2" class="item2" 
+						href="http://home">Opcion3</a-->
+						</li>
+					
+					{% endifequal %}
+		{% endfor %}
+	
+	{% endif %}
+  </ul>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    var dm1 = new DropMenu1('menu1');
+    dm1.position.top = -1;
+    dm1.init();
+</script>
+
+<div id="content">
+<div id="right">
+{% for solicitud in solicitudes %}
+    <div class="solicitud">
+    <form name="." method="POST">
+      <center>
+            <table cellpadding="5" cellspacing="10">
+              <tr>
+                <td style="width:10em">
+                    <label class="lblsolicitud"><strong>User:</strong></label>
+                </td>
+                <td >
+                    <label class="lblsolicitud" style="color:Green">{{solicitud.mensaje.usuario|upper }}</label>
+                </td>
+              </tr>
+              <tr>
+                <td nowrap="nowrap">
+                    <label class="lblsolicitud"><strong>Pagina Web:</strong></label>
+                </td>
+                <td style="width:10em">
+                    <label class="lblsolicitud"><strong><a href="{{solicitud.url}}">{{solicitud.url}}</a></strong></label>
+                <td>
+              </tr>
+              <tr>
+                <td nowrap="nowrap">
+                    <label class="lblsolicitud" ><strong>Fecha de envio:</strong></label>
+                </td>
+                <td>
+                    <label class="lblsolicitud" style="color:#781957">{{solicitud.fecha }}</label>
+                </td>
+              </tr>
+              <tr>
+                <td align="right">
+                    <input name="Aceptar" value="Aceptar" type="submit" class="btn" style="background-color:#14cc39;">
+                    <input type="hidden" name = "Usuario" value="{{solicitud.mensaje.usuario}}" />
+                </td>
+                <td>
+                  <input type="hidden" name = "nro" value="{{forloop.counter0}}"/>
+                  <input name="Rechazar" value="Rechazar" type="submit" class="btn" style="background-color:#eb5e5e;">
+                </td>
+              </tr>
+            </table> 
+      </center>
+    </form>
+    </div>
+    {% endfor %}
+</div>
+
+
+</div>
+
+<div id="capaVentana"
+style="border: 3px solid rgb(51, 51, 51); position: absolute; width: 350px; height: 190px; top: 168px; left: 371px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 14px; font-weight: normal; background-color: rgb(250, 250, 250); color: rgb(0, 0, 0);">
+<div style="text-align: center; color: #036DA7"> Agregar Pesta&ntilde;a </div>
+<p style="padding: 8px; text-align: center; line-height: normal;">Ingrese
+el nombre de la pesta&ntilde;a</p>
+<br>
+<center>
+<form action="/addtab/" onSubmit="return validar(this);" method="GET" id="add_tab"> 
+<input name="nombre_pes" type="text" value=""><br>
+<br>
+<input value="Aceptar" type="submit"> 
+<input id="btnCancelar" onclick="cerrarVentana();" name="btnCancelar" size="20"value="Cancelar" type="button"> 
+</form>
+</center>
+</div>
+
+<div id="capaCambiarNombre"
+style="border: 3px solid rgb(51, 51, 51); position: absolute; width: 350px; height: 190px; top: 168px; left: 371px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 14px; font-weight: normal; background-color: rgb(250, 250, 250); color: rgb(0, 0, 0);">
+<div style="text-align: center; color: #036DA7"> Cambiar Nombre de Pesta&ntilde;a </div>
+<p style="padding: 8px; text-align: center; line-height: normal;">Nuevo Nombre</p>
+<br>
+<center>
+<form action="/renametab/" onSubmit="return validar(this)" method="get" id="for_cambiar" name="for_cambiar"> 
+<input name="nombre_pes_cam"type="text"><br>
+<input type="hidden" value="" name="idpestanha" />
+<br>
+<input id="btnAceptar" onclick="cerrarCambiarNombre();" name="btnAceptar"
+value="Aceptar" type="submit"> <input id="btnCancelar"
+onclick="cerrarCambiarNombre();" name="btnCancelar" size="20"
+value="Cancelar" type="button"> </form>
+</center>
+</div>
+
+<div id="capaConfirmareliminacion"
+style="border: 3px solid rgb(51, 51, 51); position: absolute; width: 350px; height: 190px; top: 168px; left: 371px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 14px; font-weight: normal; background-color: rgb(250, 250, 250); color: rgb(0, 0, 0);">
+<div style="text-align: center; color: #036DA7"> Eliminar Pesta&ntilde;a </div>
+<p style="padding: 8px; text-align: center; line-height: normal;">Esta seguro de que desea borrar la pesta&ntilde;a? Este paso no puede deshacerse!</p>
+<br>
+<center>
+<form action="/deletetab/" onSubmit="return validar(this)" method="get" id="for_elim" name="for_elim">
+<input type="hidden" value="" name="idpestanha" />
+<input id="btnAceptar" onclick="cerrareliminarpes();" name="btnSi"
+value="Si" type="submit">      <input id="btnCancelar"
+onclick="cerrareliminarpes();" name="btnCancelar" size="20"
+value="Cancelar" type="button"> </form>
+</center>
+</div>
+
+<div id="capaSerDesarrollador"
+ style="border: 3px solid rgb(51, 51, 51); position: absolute; width: 380px; left: 371px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 14px; font-weight: normal; background-color: rgb(250, 250, 250); color: rgb(0, 0, 0); top: 168px; height: 299px;">
+<div style="text-align: center; color: rgb(3, 109, 167);">Solicitar
+ser Desarrollador</div>
+<br>
+<center>
+<form action="/mensaje/" onSubmit="return ValidaCampos(this)"
+ method="get" id="ser_des" name="ser_des">
+  <div style="text-align: left; margin-left: 40px;">
+  <label for="id_pagweb">Pagina Web<small>(required)</small></label><input
+ name="url"><br>
+  <label for="id_desc" text-align="left">Descripcion<small>(opcional)</small></label><textarea
+ id="id_cuerpo" rows="10" cols="40" name="cuerpo"></textarea><br>
+  </div>
+  <input id="btnAceptar"
+ onclick="cerrarSolicitudDesarrollador();" name="btnSi"
+ value="Solicitar" type="submit"> <input id="btnCancelar"
+ onclick="cerrarSolicitudDesarrollador();" name="btnCancelar"
+ size="20" value="Cancelar" type="button"> </form>
+</center>
+</div>
+
+<div id="editarModelo" style="border: 3px solid rgb(51, 51, 51); position: absolute; width: 380px; left: 371px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 14px; font-weight: normal; background-color: rgb(250, 250, 250); color: rgb(0, 0, 0); top: 168px; height: 299px; visibility: hidden">
+<div style="text-align: center; color: rgb(3, 109, 167);">Editar Dise&ntilde;o</div>
+<br>
+<center>
+<form action="/editardisenho/" method="GET">
+	<p><label for="id_column">Cantidad de Columna:</label>
+		<select name="column" id="id_column">
+			<option value="1" onclick="mostrar_modelo(1)">1</option>
+            <option value="2" onclick="mostrar_modelo(2)">2</option>
+            <option value="3" onclick="mostrar_modelo(3)">3</option>
+	    </select>
+	</p>
+	<div id="col" style="visibility:hidden; position: relative; left: 0px" class="radio"><label for="numerocolumna"> Modelo: </label>
+		<br><br>
+		<ul style="visibility:visible; position: relative; left: 40px">
+			<li id="col1" style="visibility:hidden; float:left"><input type="Radio" name="numerocolumna" value="1"><img id="img1" align="middle" src="/media/img/widget/column1.gif"></img></li>
+			<li id="col2" style="visibility:hidden; float:left"><input type="Radio" name="numerocolumna" value="2"><img id="img2" align="middle" src=""></img></li>
+			<li id="col3" style="visibility:hidden; float:left"><input type="Radio" name="numerocolumna" value="3"><img id="img3" align="middle" src=""></img></li>
+		</ul>
+	</div><br><br><br><br><br><br>
+    <input type="submit" value="Guardar"/><input type="button" value="Cancelar" onclick="ocultar_editpestanha()"/>
+</form>
+</center>
+</div>
+
+<div id="cerrarcaja" style="visibility: hidden; border: 3px solid rgb(51, 51, 51); position: absolute; width: 350px; height: 190px; left: 371px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 14px; font-weight: normal; background-color: rgb(250, 250, 250); color: rgb(0, 0, 0);">
+	<div id="nombrewidget" style="text-align: center; color: #036DA7"></div>
+	<p style="padding: 8px; text-align: center; line-height: normal;">¿Realmente deseas eliminar este widget?</p>
+	<br>
+	<center>
+		<form action="/eliminarcaja/" method="GET" id="nrocaja">
+			<input id="idbox" type="hidden" value="" name="idcaja" />
+			<input id="Aceptar" onclick="cancelarcerrarbox();" value="Si" type="submit">
+			<input id="Cancelar" onclick="cancelarcerrarbox();" value="Cancelar" type="button"> </form>
+	</center>
+</div>
+
+<div id="capaFondo1">
+</div>
+<div id="capaFondo2">
+</div>
+<div id="capaFondo3">
+</div>
+<div id="capaFondo4">
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% if lista_ultimos_ingresos %}
+    <ul>
+    {% for ingreso in lista_ultimos_ingresos %}
+        <li><!--a href="/ingresos/{{ ingreso.id }}/"-->{{ ingreso.aportante }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay "ultimos ingresos".</p>
+{% endif %}
+
+{% if final %}
+    {{ final }}
+{% endif %}

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/155/trunk/obispado/templates/egresos
+END
+carga_egreso.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/155/trunk/obispado/templates/egresos/carga_egreso.html
+END
+edit_egreso.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/155/trunk/obispado/templates/egresos/edit_egreso.html
+END
+solicitar_planilla_egresos.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/139/trunk/obispado/templates/egresos/solicitar_planilla_egresos.html
+END
+lista.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/149/trunk/obispado/templates/egresos/lista.html
+END

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+	<title>Sistema de Contabilidad</title>	
+	<link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen" />
+    <link href="/media/css/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/media/css/default.css" media="screen" rel="stylesheet" type="text/css" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="en-gb" />
+	<meta http-equiv="imagetoolbar" content="false" />
+</head>
+<TITLE>Recuperar contrase&ntilde;a</TITLE>
+
+<BODY onload="inicializar();">
+    <div>
+    <table align="center" border="0">
+    <td align="left" width=11%><h3>Bienvenido<font color="#888"> {{nombreuser}}</font> </h3></td>
+    </div>
+    <td align="right" width=82%>
+	<div id="header">
+		<h1>Contabilidad</h1>
+		<h2>Sistema Contable - Obispado</h2>
+	</div></td>
+    <tr>
+    </TABLE>
+<div id="content" align="center">
+<div><h3>Recuperar Password/Username</h3></div>
+<div id="infoRecovery">
+	<p>Completa con tu Username o Mail
+	   y enviaremos a tu correo tu Password/Username para acceder al sistema de contabilidad</p>
+</div>
+<br>
+<center>
+<form action="/obispado/recovery/" onSubmit="return ValidaMail(this)"
+ method="post" id="ser_des" name="ser_des">
+  <div style="text-align: left; margin-left: 60px;">
+	<table>
+		<tr>
+			<td> <label for="id_mail">Mail:</label><br></td>
+			<td><input type="text" name="Mail"></td>
+		</tr>
+		<tr>
+			<td><label for="id_username">Username:</label></td>
+			<td><input type="text" name="Username"> </td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:right;"><input id="btnA" onclick="cerrarRecovery();"  name="btnrecovry" type="submit" value="Recovery">
+			<input id="btnCancelar" onclick="cerrarRecovery();" name="btnCancelar" size="20" value="Cancelar" type="button"> </td>
+		</tr>
+	</table>
+</form>
+</div>
+
+</BODY>
+</HTML>

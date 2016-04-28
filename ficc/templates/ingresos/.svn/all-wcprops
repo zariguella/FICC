@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/151/trunk/obispado/templates/ingresos
+END
+carga_ingreso.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/131/trunk/obispado/templates/ingresos/carga_ingreso.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/9/trunk/obispado/templates/ingresos/index.html
+END
+edit_ingreso.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/151/trunk/obispado/templates/ingresos/edit_ingreso.html
+END
+lista.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/148/trunk/obispado/templates/ingresos/lista.html
+END
+solicitar_planilla_ingresos.html
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/139/trunk/obispado/templates/ingresos/solicitar_planilla_ingresos.html
+END

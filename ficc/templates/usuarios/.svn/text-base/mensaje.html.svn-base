@@ -1,0 +1,51 @@
+{% extends "widpylogin/base_site_set.html" %}
+{% load i18n %}
+
+{% block extrastyle %}   {% load adminmedia %}   {{ block.super }} <link rel="stylesheet" type="text/css" href="/media/css/login.css" /> {% endblock %}
+<h1 id="site-name">Settings</h1><br>
+{% block bodyclass %}login{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div class="form_subtitle"></div>
+                 <form name="." method="post">            
+				
+                    <label class="contact"><strong>Remitente:</strong></label>
+					<label class="contact"><strong>{{username}}</strong></label>
+					
+					<div class="form_row">
+                    <div class="contact_input" />{{ msj_form.destinatario.errors }}</div>
+                    <label class="contact"><strong>Destinatario:</strong></label>
+                    <div class="contact_input" />{{ msj_form.destinatario }}</div>
+                    </div> 
+					
+					<div class="form_row">
+                    <div class="contact_input" />{{ msj_form.pagina_web.errors }}</div>
+                    <label class="contact"><strong>Pagina Web:</strong></label>
+                    <div class="contact_input" />{{ msj_form.pagina_web }}</div>
+                    </div> 
+					
+                	<div class="form_row">
+                    <div class="contact_input" />{{ msj_form.asunto.errors }}</div>
+                    <label class="contact"><strong>Asunto:</strong></label>
+                    <div class="contact_input" />{{ msj_form.asunto }}</div>
+                    </div> 
+					
+				    <div class="form_row">
+                    <div class="contact_input" />{{ msj_form.cuerpo.errors }}</div>
+                    <label class="contact"><strong>Contenido:</strong></label>
+                    <div class="text" />{{ msj_form.cuerpo }}</div>
+                    </div>
+					
+                    <div class="form_row">
+                    <input type="submit" class="edit" value="Save" />
+                    </div>   
+                  </form>     
+                </div>
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+{% endblock %}

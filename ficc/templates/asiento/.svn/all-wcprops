@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/152/trunk/obispado/templates/asiento
+END
+asiento.html
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/129/trunk/obispado/templates/asiento/asiento.html
+END
+edit_asiento.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/152/trunk/obispado/templates/asiento/edit_asiento.html
+END
+lista.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/148/trunk/obispado/templates/asiento/lista.html
+END

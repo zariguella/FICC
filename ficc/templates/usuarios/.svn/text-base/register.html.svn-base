@@ -1,0 +1,81 @@
+{% extends "widpylogin/base_site_set.html" %}
+{% load i18n %}
+
+{% block extrastyle %}{% load adminmedia %}{{ block.super }}<link rel="stylesheet" type="text/css" href="/media/css/login.css" />
+															<link rel="stylesheet" type="text/css" href="/media/css/style.css" />{% endblock %}
+
+{% block bodyclass %}login{% endblock %}
+
+
+{% block branding %}
+<h1 style="text-align: center;color:#aaa" id="site-name">{% trans 'Widpy Register Zone' %}</h1>
+{% endblock %}
+
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="header">
+	<div id= "menu">
+		<ul>
+			<a href="/inicio/" class="menu">Home</a>
+		</ul>
+	</div>
+</div>
+
+<div class="form_subtitle"></div>
+                 <form name="." method="post">          
+                    <div class="form_row">
+                    <div class="contact_input" />{{ form.username.errors }}</div>
+                    <div style="margin-left: 55px;"><label class="contact"><strong>Username:</strong></label></div>
+                    <div style="margin-left: 55px;" class="contact_input" />{{ form.username }}</div>
+                    </div>  
+					
+					<div class="form_row">
+                    <div class="contact_input" />{{ form.first_name.errors }}</div>
+                    <div style="margin-left: 55px;"><label class="contact"><strong>First Name:</strong></label></div>
+                    <div style="margin-left: 55px;" class="contact_input" />{{ form.first_name }}</div>
+                    </div> 
+					
+					<div class="form_row">
+                    <div class="contact_input" />{{ form.last_name.errors }}</div>
+                    <div style="margin-left: 55px;"><label class="contact"><strong>Last Name:</strong></label></div>
+                    <div style="margin-left: 55px;" class="contact_input" />{{ form.last_name }}</div>
+                    </div> 
+					
+                    <div class="form_row">
+                    <div class="contact_input" />{{ form.email.errors }}</div>
+                    <div style="margin-left: 55px;"><label class="contact"><strong>Email:</strong></label></div>
+                    <div style="margin-left: 55px;" class="contact_input" />{{ form.email }}</div>
+                    </div>
+
+					<div class="form_row">
+                    <div class="contact_input" />{{ form.nacionalidad.errors }}</div>
+                    <div style="margin-left: 55px;"><label class="contact"><strong>Nacionalidad:</strong></label></div>
+                    <div style="margin-left: 55px;" class="contact_input" />{{ form.nacionalidad }}</div>
+                    </div> 
+					
+
+                    <div class="form_row">
+                    <div class="contact_input" />{{ form.password1.errors }}</div>
+                    <div style="margin-left: 55px;"><label class="contact"><strong>Contraseña:</strong></label></div>
+                    <div style="margin-left: 55px;" class="contact_input" />{{ form.password1 }}</div>
+                    </div>
+
+
+                    <div class="form_row">
+                    <div class="contact_input" />{{ form.password2.errors }}</div>
+                    <div style="margin-left: 55px;"><label class="contact"><strong>Confirmar Contraseña:</strong></label></div>
+                    <div style="margin-left: 55px;" class="contact_input" />{{ form.password2 }}</div>
+                    </div>
+					<br>
+                    <div style="text-align: center;"class="form_row">
+                    <input type="submit" class="register" value="Registrar" />
+                    <input type="submit" name="Cancelar" value="Cancelar"/>
+					</div>  
+				  </form>     
+                </div>
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+{% endblock %}

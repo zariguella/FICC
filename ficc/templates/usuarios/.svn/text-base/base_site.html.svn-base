@@ -1,0 +1,9 @@
+{% extends "widpylogin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Ecosystem' %}{% endblock %}
+
+{% block branding %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
