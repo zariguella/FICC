@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+	<title>Sistema de Contabilidad</title>	
+	<link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen" />
+    <link href="/media/css/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/media/css/default.css" media="screen" rel="stylesheet" type="text/css" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="en-gb" />
+	<meta http-equiv="imagetoolbar" content="false" />
+</head>
+<TITLE>Agregar Ingreso</TITLE>
+
+<script type="text/javascript" src="/media/js/CalendarPopup.js"></script>
+
+<script type="text/javascript">
+        
+        var cal1xx = new CalendarPopup("testdiv1");
+        cal1xx.showNavigationDropdowns();
+        document.write(getCalendarStyles());
+        function ValidarFecha(Cadena){  
+             var Fecha= new String(Cadena)   // Crea un string  
+             var RealFecha= new Date()   // Para sacar la fecha de hoy  
+             // Cadena Anho  
+             var Ano= new String(Fecha.substring(Fecha.lastIndexOf("/")+1,Fecha.length))  
+             // Cadena Mes  
+             var Mes= new String(Fecha.substring(Fecha.indexOf("/")+1,Fecha.lastIndexOf("/")))  
+             // Cadena Dia  
+             var Dia= new String(Fecha.substring(0,Fecha.indexOf("/")))  
+
+             /*var Dia= new String(Fecha.substring(Fecha.lastIndexOf("/")+1,Fecha.length))  
+             var Mes= new String(Fecha.substring(Fecha.indexOf("/")+1,Fecha.lastIndexOf("/")))  
+             var Ano= new String(Fecha.substring(0,Fecha.indexOf("/")))*/
+           
+             // Valido el anho  
+             if (isNaN(Ano) || Ano.length<4 || parseFloat(Ano)<1900){  
+                     alert('Anho invalido')  
+                 return false  
+             }  
+             // Valido el Mes  
+             if (isNaN(Mes) || parseFloat(Mes)<1 || parseFloat(Mes)>12){  
+                 alert('Mes invalido')  
+                 return false  
+             }  
+             // Valido el Dia  
+             if (isNaN(Dia) || parseInt(Dia, 10)<1 || parseInt(Dia, 10)>31){  
+                 alert('Dia invalido')  
+                 return false  
+             }  
+             if (Mes==4 || Mes==6 || Mes==9 || Mes==11 || Mes==2) {  
+                 if (Mes==2 && Dia > 28 || Dia>30) {  
+                     alert('Dia invalido')  
+                     return false  
+                 }  
+             }  
+               
+           //para que envie los datos, quitar las  2 lineas siguientes  
+           //alert("Fecha correcta.")  
+            return true    
+         }  
+         function verificar(frm){
+            
+            if(ValidarFecha(frm['fechainicio'].value)){
+                //frm['boton'].submit();
+                //frm['formu'].submit();
+                if(ValidarFecha(frm['fechafin'].value)) {
+                    document.formulario.submit();
+                }
+            }
+        }
+</script>
+
+
+<body onload=";">
+	<div>
+    <table align="center" border="0">
+    <td align="left" width=11%><h3>Bienvenido<font color="#888"> {{nombreuser}}</font> </h3></td>
+    </div>
+    <td align="right" width=82%>
+	<div id="header">
+		<h1>Contabilidad</h1>
+		<h2>Sistema Contable - Obispado</h2>
+	</div></td>
+    <tr>
+    </TABLE>
+	<ul id="nav" class="dropdown dropdown-horizontal">
+        <li><a href="/obispado/logout/">Desconectarse</a></li>
+        <li class="dir">Ingresos ▼
+            <ul>
+                <li><a href="/obispado/carga_ingresos/">Cargar Ingresos</a></li>
+                <li><a href="/obispado/ingresos_list/">Ver Ingresos</a></li>
+                <li><a href="/obispado/solicitar_planilla_ingresos/">Planilla Ingresos</a></li>
+            </ul>
+        </li>
+        <li class="dir">Egresos ▼
+            <ul>
+                <li><a href="/obispado/carga_egresos/">Cargar Egresos</a></li>
+                <li><a href="/obispado/egresos_list/">Ver Egresos</a></li>
+                <li><a href="/obispado/solicitar_planilla_egresos/">Planilla Egresos</a></li>
+            </ul>
+        </li>
+        <li class="dir">Asientos ▼
+            <ul>
+                <li><a href="/obispado/cargar_asiento/">Cargar Asientos</a></li>
+                <li><a href="/obispado/asientos_list/">Ver Asientos</a></li>
+            </ul>
+        </li>
+
+        <li><a href="/obispado/admin/aportantes/aportante/">Aportantes</a></li>
+        <li><a href="/obispado/admin/proveedores/proveedor/">Proveedores</a></li>
+        <li><a href="/obispado/balances/">Generar Balance</a></li>
+        <li class="dir">Administrar Sistema ▼
+            <ul>
+                <li><a href="/obispado/admin/">Administracion General</a></li>
+                <li><a href="/obispado/registro/">Crear un nuevo usuario</a></li>
+                <li><a href="/obispado/admin/password_change/">Cambiar Contrase&ntilde;a del usuario actual</a></li>
+                <li><a href="/obispado/ver_logs">Ver logs</a></li>
+            </ul>
+        </li>
+    </ul>
+    <br></br>
+	<div id="content" align="center">
+		<H1 align="center">Generar Balance</H1> 
+        <H2 align="center">Ingrese las Fechas de Inicio y de Fin</H2>
+			
+<FORM action="/obispado/balances/generar_balance/" METHOD="GET" name="formulario">
+<table align="center" border="0">
+
+<td align="left" width="200">Fecha inicio:
+</td>
+<!--td align="center" width="150"><INPUT NAME="fe" TYPE="TEXT" VALUE="" onChange = "ValidarFecha(this.value);"-->
+<td align="left" width="200"><input name="fechainicio" id="fecha_inicio" value="" type="text"><a href="#" onclick="cal1xx.select(document.forms[0].fechainicio,'anchor1xx','dd/MM/yyyy'); return false;" title="cal1xx.select(document.forms[0].fechainicio,'anchor1xx','dd/MM/yyyy'); return false;" name="anchor1xx" id="anchor1xx">Elegir</a>
+</td>
+<tr>
+<tr>
+<br>
+<td align="left" width="200">Fecha fin:
+</td>
+<!--td align="center" width="150"><INPUT NAME="fe" TYPE="TEXT" VALUE="" onChange = "ValidarFecha(this.value);"-->
+<td align="left" width="200"><input name="fechafin" id="fecha_fin" value="" type="text"><a href="#" onclick="cal1xx.select(document.forms[0].fechafin,'anchor1xx','dd/MM/yyyy'); return false;" title="cal1xx.select(document.forms[0].fechainicio,'anchor1xx','dd/MM/yyyy'); return false;" name="anchor1xx" id="anchor1xx">Elegir</a>
+</td>
+<tr>
+<TD align="center" width="150"><INPUT NAME="boton" type="button" VALUE="Generar Balance" onclick="verificar(this.form);"></TD>
+</TABLE>
+
+</FORM>
+<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+<tr>
+
+</BODY>
+</HTML>
+
