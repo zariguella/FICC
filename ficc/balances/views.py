@@ -1,7 +1,8 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
-from ficc.libros_contables.models import *
-from ficc.plan_de_cuentas.models import *
+from django.template import loader
+from .models import *
+from .models import *
 from django.contrib.auth.models import User
 import time
 import csv
@@ -23,7 +24,11 @@ def index(request):
     is_auth = request.user.is_authenticated()
     if(is_auth):
         tipouser = User.objects.get(id=user_id)
-        return render_to_response('balances/generar_balance.html', {'nombreuser': tipouser.username})
+        template = loader.get_template('balances/generar_balance.html')
+        context = {
+            'nombreuser': tipouser.username,
+        }
+        return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('/ficc/login/')
 

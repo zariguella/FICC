@@ -31,6 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'aportantes.apps.AportantesConfig',
+    'balances.apps.BalancesConfig',
+    #'egresos.apps.EgresosConfig',
+    #'ingresos.apps.IngresosConfig',
+    #'libros_contables.apps.Libros_contablesConfig',
+    #'plan_de_cuentas.apps.Plan_de_cuentasConfig',
+    #'proveedores.apps.ProveesoresConfig',
+    #'usuarios.apps.UsuariosConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -104,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-la'
 
 TIME_ZONE = 'UTC'
 
