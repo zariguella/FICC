@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Iniciar Sesion</title>
+    <link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen" />
+    <link href="/media/css/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/media/css/default.css" media="screen" rel="stylesheet" type="text/css" />
+	<!--link rel="stylesheet" type="text/css" href="/media/css/loginnew.css"/>
+	<script type="text/javascript" src="/media/js/recovery.js"></script-->
+
+</head>
+<body>
+    <div id="header">
+		<h1>Contabilidad</h1>
+		<h2>Sistema Contable - ficc</h2>
+	</div>
+    <div id="content" align="center">
+    <h1>Ingresar</h1>
+	<table width="94%" align="center" cellpadding="5" cellspacing="4">
+		<tbody>
+			<tr>
+                <td style valign="top" width='100'></td>
+                <td style valign="top" width='100'></td>
+				<td style valign="top">					
+					<form action="." method="post" id="login-form">
+						<table cellspacing="2" cellpadding="5" width="100%" border="0" align="center">		
+								<tbody>
+								<tr>
+								<td valign=top style="text-align:center" nowrap="nowrap">
+								<table id="right_box" align="center" border="0" cellpadding="5" cellspacing="5">
+								<tbody>
+									<tr>
+										<td colspan="2" align="center" style="font-family:Arial;">
+											<!--div class="header_title"><font size="3"><b>Ingresar</b></font></div-->
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+											{% if error_message %}
+                                            <table align="center" style="float:center;border:3px solid red;">
+                                            <td align="center">{{ error_message }}</td>
+                                            <tr>
+                                            </TABLE>
+                                            <br>
+
+											{% endif %}
+										<td>
+									</tr>
+									<tr>
+										<td colspan="2" align="center">
+									</tr>
+									<tr id="username-row">
+										<td nowrap="nowrap">
+											<div align="right">
+												<span class="widpylabel"><font size="3">Nombre de usuario:</font></span>
+											</div>
+										</td>
+										<td>
+											<input type="text" name="username" id="id_username" size="25"/>
+										</td>
+									</tr>
+
+									<tr id="password-row">
+										<td align="right" nowrap="nowrap">
+											<span class="widpylabel"><font size="3">Contrase&ntilde;a:</font></span>
+										</td>
+										<td>
+											 <input type="password" name="password" id="id_password" size="25"/>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td align="left">
+											<input type="submit" name="login" id="login" value="Entrar">
+										</td>
+									</tr>
+									<!--tr>
+										<td colspan="2" height="35" align="center" valign="bottom">
+											<a href="/ficc/registro/">Registrar un nuevo usuario</a>
+										</td>
+									</tr-->
+                                    <tr>
+										<td colspan="2" height="35" align="center" valign="bottom">
+											<a href="/">Volver al inicio</a>
+										</td>
+									</tr>
+								</tbody>
+								</table>							
+								</td>
+								</tr>
+								</tbody>
+							</table>
+						</form>
+					<br><br>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br><br><br><br>
+	<div align="center" id="top_bar">
+	<table width="95%" align="center" cellpadding="3" cellspacing="0" style="margin-bottom:5">
+			<tr>
+			</tr>
+	</table>
+	</div>
+    </div>
+<br>
+
+<script type="text/javascript">
+document.getElementById('login').focus()
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{% extends "lumino/base.html" %}
+ 
+{% block title %}Agregar Ingreso{% endblock %}
+{% block titulo %}Lista de ingresos{% endblock %}

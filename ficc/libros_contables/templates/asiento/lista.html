@@ -1,0 +1,136 @@
+{% extends "lumino/base.html" %} 
+{% block title %}Planilla Egresos{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+var cal1xx = new CalendarPopup("testdiv1");
+        cal1xx.showNavigationDropdowns();
+        document.write(getCalendarStyles());
+        writeSource("jscal1xx");
+        
+        function validar(e) { // 1
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla==8) return true; //Tecla de retroceso (para poder borrar)
+            if (tecla==0) return true;
+            patron = /[1234567890.-]/;// Solo acepta numeros y el punto y el guion
+
+            te = String.fromCharCode(tecla);
+            return patron.test(te); 
+        } 
+        
+        function verificarsuma(frm){
+            var sumadebe=0, sumahaber=0;
+
+            for(i=1;i<=12;i++){
+                if(frm['d'+i].value == ''){
+                    frm['d'+i].value = 0;
+                }
+                if(frm['h'+i].value == ''){
+                    frm['h'+i].value = 0;
+                }
+            }
+            for(i=1;i<=12;i++){
+                sumadebe = sumadebe + parseFloat(frm['d'+i].value);
+                sumahaber = sumahaber + parseFloat(frm['h'+i].value);
+            }
+            if (sumadebe != sumahaber){
+                alert('Las sumas no coinciden');
+				frm.boton.disabled = true;
+            }else{
+                frm['totald'].value = sumadebe;
+                frm['totalh'].value = sumadebe;
+                frm.boton.disabled = false;
+                //document.formu.submit();
+            }
+        }
+        
+        function verificarcampos(frm){
+             /*if(frm['date1xx'].value == ""){
+                alert("Ingrese fecha del documento");
+                return 0;
+            }*/
+            
+            /*for(i=1;i<=12;i++){
+                if(frm['d'+i].value != 0){
+                    if(frm['cd'+i].value == ''){
+                        alert("Complete el tipo de cuenta")
+                        return 0;
+                    }
+                }
+                if(frm['h'+i].value != 0){
+                    if(frm['ch'+i].value == ''){
+                        alert("Complete el tipo de cuenta")
+                        return 0;
+                    }
+                }
+                
+            }
+            if(frm['comentarios'].value.length >= 101 ) {
+                alert("Se permiten hasta 100 caracteres para comentarios")
+                return 0;
+            }*/
+            document.formu.submit();
+        }
+</script>
+{% endblock %}
+{% block titulo %}Cargar Nuevo Asiento{% endblock %}
+ 
+{% block content %}
+	<div id="content" align="center">
+    
+<H1 align="center">Lista de Asientos</H1> 
+{% if msj %}
+			<table align="center" style="float:center;border:3px solid red;">
+			<td align="center" width="500">{{msj}}</td>
+            <tr>
+            </TABLE>
+            <br>
+{% endif %}
+<FORM action="/libros_contables/asientos_list/" METHOD="GET" name="formu">
+
+    <br>
+    <h3>Filtrar asientos</h3>
+    <p>Para buscar una entrada <br></br>llene el campo fecha y oprima el boton filtrar</p>
+    <br>
+    <table align="center" border="0" cellpadding="10">
+    <td align="left" width="200">Fecha:
+    </td>
+    <td align="left" width="200"><input name="date1xx" value="" type="text"><a href="#" onclick="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" title="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" name="anchor1xx" id="anchor1xx">Elegir</a>
+    </td>
+    <tr>
+    <tr>
+    <tr>
+    <tr>
+    <td align="center" width="150"><INPUT NAME="boton" type="button" id="butenv" VALUE="Filtrar" onclick="verificarcampos(this.form);" class="button">
+    </TABLE>
+<div id="tabla_borde" align="center">
+<table align="center" BORDER="1">
+<td align='left' width='220'><b>Fecha:</b></td><td align='left' width='850'><b>Cuenta Debe:</b></td><td align='left' width='180'><b>Monto Debe:</b></td><td align='left' width='850'><b>Cuenta Haber:</b></td><td align='left' width='180'><b>Monto Haber:</b></td><td align='left' width='80'><b></b></td>
+<tr>
+{% if cant %}
+{% for f in ltot.object_list %}
+        <td>{{f.fecha}}</td><td>{{f.cuentad}}</td> <td>{{f.montod}}</td><td>{{f.cuentah}}</td> <td>{{f.montoh}}</td><td><a href="/libros_contables/asientos_edit/{{f.id}}">Editar</a></td><tr>
+{% endfor %}
+
+{% endif %}
+
+</TABLE>
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if ltot.has_previous %}
+            <a href="?page={{ ltot.previous_page_number }}">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            P&aacute;gina {{ ltot.number }} de {{ ltot.paginator.num_pages }}.
+        </span>
+
+        {% if ltot.has_next %}
+            <a href="?page={{ ltot.next_page_number }}">siguiente</a>
+        {% endif %}
+    </span>
+</div>
+</FORM>
+<tr>
+</div>
+{% endblock %}

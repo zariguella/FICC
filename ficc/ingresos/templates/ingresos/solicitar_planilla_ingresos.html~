@@ -1,0 +1,85 @@
+{% extends "lumino/base.html" %} 
+{% block title %}Planilla Egresos{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="/media/js/CalendarPopup.js"></script>
+<script type="text/javascript">
+        var cal1xx = new CalendarPopup("testdiv1");
+        cal1xx.showNavigationDropdowns();
+        document.write(getCalendarStyles());
+        writeSource("jscal1xx");
+        function ValidarFecha(Cadena){  
+             var Fecha= new String(Cadena)   // Crea un string  
+             var RealFecha= new Date()   // Para sacar la fecha de hoy  
+             // Cadena Anho  
+             var Ano= new String(Fecha.substring(Fecha.lastIndexOf("/")+1,Fecha.length))  
+             // Cadena Mes  
+             var Mes= new String(Fecha.substring(Fecha.indexOf("/")+1,Fecha.lastIndexOf("/")))  
+             // Cadena Dia  
+             var Dia= new String(Fecha.substring(0,Fecha.indexOf("/")))  
+
+             /*var Dia= new String(Fecha.substring(Fecha.lastIndexOf("/")+1,Fecha.length))  
+             var Mes= new String(Fecha.substring(Fecha.indexOf("/")+1,Fecha.lastIndexOf("/")))  
+             var Ano= new String(Fecha.substring(0,Fecha.indexOf("/")))*/
+           
+             // Valido el anho  
+             if (isNaN(Ano) || Ano.length<4 || parseFloat(Ano)<1900){  
+                     alert('Anho invalido')  
+                 return false  
+             }  
+             // Valido el Mes  
+             if (isNaN(Mes) || parseFloat(Mes)<1 || parseFloat(Mes)>12){  
+                 alert('Mes invalido')  
+                 return false  
+             }  
+             // Valido el Dia  
+             if (isNaN(Dia) || parseInt(Dia, 10)<1 || parseInt(Dia, 10)>31){  
+                 alert('Dia invalido')  
+                 return false  
+             }  
+             if (Mes==4 || Mes==6 || Mes==9 || Mes==11 || Mes==2) {  
+                 if (Mes==2 && Dia > 28 || Dia>30) {  
+                     alert('Dia invalido')  
+                     return false  
+                 }  
+             }  
+               
+           //para que envie los datos, quitar las  2 lineas siguientes  
+           //alert("Fecha correcta.")  
+            return true    
+         }  
+         function verificar(frm){
+            
+            if(ValidarFecha(frm['date1xx'].value)){
+                //frm['boton'].submit();
+                //frm['formu'].submit();
+                if(ValidarFecha(frm['date1xx1'].value)) {
+                    document.formulario.submit();
+                }
+            }
+        }
+</script>
+{% endblock %}
+{% block titulo %}Generar Planilla Simplificada de Ingresos{% endblock %}
+ 
+{% block content %}
+	<div id="content" align="center">
+    <H2 align="center">Ingrese las Fechas de Inicio y de Fin</H2>
+    
+    
+    <FORM action="/obispado/generar_planilla_csv_ingresos/" METHOD="GET" name="formulario">
+        <TABLE align="center" border="0">
+            <TD align="left" width="100">Fecha Inicio:</TD>
+            <!--TD align="center" width="150"><INPUT NAME="fecha_inicio" TYPE="TEXT" VALUE=""></TD-->
+            <td align="left" width="200"><input name="date1xx" value="" type="text"><a href="#" onclick="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" title="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" name="anchor1xx" id="anchor1xx">Elegir</a>
+            </td>
+            <TR>
+            <TD align="left" width="100">Fecha Fin:</TD>
+            <!--TD align="center" width="150"><INPUT NAME="fecha_fin" TYPE="TEXT" VALUE=""></TD-->
+            <td align="left" width="200"><input name="date1xx1" value="" type="text"><a href="#" onclick="cal1xx.select(document.forms[0].date1xx1,'anchor1xx','dd/MM/yyyy'); return false;" title="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" name="anchor1xx" id="anchor1xx">Elegir</a>
+            </td>
+            <TR>
+            <TD align="center" width="150"><INPUT NAME="boton" type="button" VALUE="Generar Planilla de Ingresos" onclick="verificar(this.form);"></TD>
+        </TABLE>
+    </FORM>
+    </div>
+{% endblock %}

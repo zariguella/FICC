@@ -1,0 +1,222 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Sistema contabilidad{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/bootstrap-table.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/datepicker3.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/styles.css' %}" />
+{% block extrastyle %}{% endblock %}
+
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+<!--Icons-->
+<script src="{% static 'archivos/js/lumino.glyphs.js' %}"></script>
+<script type="text/javascript" src="{% static 'archivos/js/CalendarPopup.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+{% block scripts %}{% endblock %}
+</head>
+{% load i18n %}
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>Sistema</span>Contable</a>
+                
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> {{nombreuser}} <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+							<li>
+                                <a href="{% url 'admin:password_change' %}">
+                                    <svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Cambiar clave
+                                </a>
+                            </li>
+							<li>
+                                <a href="{% url 'admin:logout' %}">
+                                    <svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir
+                                </a>
+                            </li>
+						</ul>
+					</li>
+				</ul>
+			</div>							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<ul class="nav menu">
+            <li>
+				<a class="" href="/ingresos/carga_ingresos/">
+					<svg class="glyph stroked basket"><use xlink:href="#stroked-basket"></use></svg> Ingresos Cargar
+				</a>
+			</li>
+			<li>
+				<a class="" href="/ingresos/ingresos_list/">
+					<svg class="glyph stroked eye"><use xlink:href="#stroked-eye"></use></svg> Ingresos Ver
+				</a>
+			</li>
+			<li>
+				<a class="" href="/ingresos/solicitar_planilla_ingresos/">
+					<svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Ingresos Planilla
+				</a>
+			</li>
+            <li>
+				<a class="" href="/egresos/carga_egresos/">
+					<svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Egresos Cargar
+				</a>
+			</li>
+			<li>
+				<a class="" href="/egresos/egresos_list/">
+					<svg class="glyph stroked eye"><use xlink:href="#stroked-eye"></use></svg> Egresos Ver
+				</a>
+			</li>
+			<li>
+				<a class="" href="/egresos/solicitar_planilla_egresos/">
+					<svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Egresos Planilla
+				</a>
+			</li>               
+            <li role="presentation" class="divider"></li>
+            <li>
+				<a class="" href="/libros_contables/cargar_asiento/">
+					<svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg> Asientos Cargar
+				</a>
+			</li>
+			<li>
+				<a class="" href="/libros_contables/asientos_list/">
+					<svg class="glyph stroked eye"><use xlink:href="#stroked-eye"></use></svg> Asientos Ver
+				</a>
+			</li>
+			<li role="presentation" class="divider"></li>
+            <li>
+				<a class="" href="/admin/aportantes/aportante/">
+					<svg class="glyph stroked female user"><use xlink:href="#stroked-female-user"></use></svg> Aportantes
+				</a>
+			</li>
+            <li>
+				<a class="" href="/admin/proveedores/proveedor/">
+					<svg class="glyph stroked male user"><use xlink:href="#stroked-male-user"></use></svg> Proveedores
+				</a>
+			</li>
+            <li>
+				<a class="" href="/balances/">
+					<svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Generar Balance
+				</a>
+			</li>
+            <li>
+				<a class="" href="/ver_logs/">
+					<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Ver Registro
+				</a>
+			</li>
+			<li role="presentation" class="divider"></li>
+		</ul>
+
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">				
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+                        {% block titulo %}{% endblock %}
+                        {% block content_title %}{% if title %}{{ title }}{% endif %}{% endblock %}
+                        {% block messages %}
+                            {% if messages %}
+                                <ul class="messagelist">{% for message in messages %}
+                                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+                                {% endfor %}</ul>
+                            {% endif %}
+                        {% endblock messages %}                      
+                    </div>
+					<div class="panel-body">                            
+                            {% block pretitle %}{% endblock %}
+                            
+                            {% block content %}
+                                {% if app_list %}
+                                    {% for app in app_list %}
+                                        <div class="app-{{ app.app_label }} module">
+                                        <table>
+                                        <caption>
+                                            <a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>
+                                        </caption>
+                                        {% for model in app.models %}
+                                            <tr class="model-{{ model.object_name|lower }}">
+                                            {% if model.admin_url %}
+                                                <th scope="row"><a href="{{ model.admin_url }}">{{ model.name }}</a></th>
+                                            {% else %}
+                                                <th scope="row">{{ model.name }}</th>
+                                            {% endif %}
+
+                                            {% if model.add_url %}
+                                                <td><a href="{{ model.add_url }}" class="addlink">{% trans 'Add' %}</a></td>
+                                            {% else %}
+                                                <td>&nbsp;</td>
+                                            {% endif %}
+
+                                            {% if model.admin_url %}
+                                                <td><a href="{{ model.admin_url }}" class="changelink">{% trans 'Change' %}</a></td>
+                                            {% else %}
+                                                <td>&nbsp;</td>
+                                            {% endif %}
+                                            </tr>
+                                        {% endfor %}
+                                        </table>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>{% trans "You don't have permission to edit anything." %}</p>
+                                {% endif %}
+                            {% block object-tools %}{% endblock %}
+                            {{ content }}
+                            {% endblock %}
+                            {% block sidebar %}{% endblock %}
+                        <!-- END Content -->
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->		
+	</div>	<!--/.main-->
+
+	<script src="{% static 'archivos/js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'archivos/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'archivos/js/chart.min.js' %}"></script>
+	<script src="{% static 'archivos/js/chart-data.js' %}"></script>
+	<script src="{% static 'archivos/js/easypiechart.js' %}"></script>
+	<script src="{% static 'archivos/js/easypiechart-data.js' %}"></script>
+	<script src="{% static 'archivos/js/bootstrap-datepicker.js' %}"></script>
+	<script>
+		$('#calendar').datepicker({
+		});
+
+		!function ($) {
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
+		        $(this).find('em:first').toggleClass("glyphicon-minus");      
+		    }); 
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>
+    <DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>	
+</body>
+
+</html>

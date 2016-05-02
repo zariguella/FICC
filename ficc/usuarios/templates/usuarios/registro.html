@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head profile="http://gmpg.org/xfn/11">
+	<title>Sistema de Contabilidad</title>	
+	<link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen" />
+    <link href="/media/css/dropdown.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/media/css/default.css" media="screen" rel="stylesheet" type="text/css" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="en-gb" />
+	<meta http-equiv="imagetoolbar" content="false" />
+</head>
+<body>
+    <div>
+    <table align="center" border="0">
+    
+    <td align="left" width=11%><h3><a href="/ficc/">Bienvenido<font color="#888"> {{nombreuser}}</font> </a></h3></td>
+    </div>
+    <td align="right" width=82%>
+	<div id="header">
+		<h1>Contabilidad</h1>
+		<h2>Sistema Contable - ficc</h2>
+	</div></td>
+    <tr>
+    </TABLE>
+    <ul id="nav" class="dropdown dropdown-horizontal">
+        <li><a href="/ficc/logout/">Desconectarse</a></li>
+        <li class="dir">Ingresos ▼
+            <ul>
+                <li><a href="/ficc/carga_ingresos/">Cargar Ingresos</a></li>
+                <li><a href="/ficc/ingresos_list/">Ver Ingresos</a></li>
+                <li><a href="/ficc/solicitar_planilla_ingresos/">Planilla Ingresos</a></li>
+            </ul>
+        </li>
+        <li class="dir">Egresos ▼
+            <ul>
+                <li><a href="/ficc/carga_egresos/">Cargar Egresos</a></li>
+                <li><a href="/ficc/egresos_list/">Ver Egresos</a></li>
+                <li><a href="/ficc/solicitar_planilla_egresos/">Planilla Egresos</a></li>
+            </ul>
+        </li>
+        <li class="dir">Asientos ▼
+            <ul>
+                <li><a href="/ficc/cargar_asiento/">Cargar Asientos</a></li>
+                <li><a href="/ficc/asientos_list/">Ver Asientos</a></li>
+            </ul>
+        </li>
+
+        <li><a href="/ficc/admin/aportantes/aportante/">Aportantes</a></li>
+        <li><a href="/ficc/admin/proveedores/proveedor/">Proveedores</a></li>
+        <li><a href="/ficc/balances/csv/">Generar Balance</a></li>
+        <li class="dir">Administrar Sistema ▼
+            <ul>
+                <li><a href="/ficc/admin/">Administracion General</a></li>
+                <li><a href="/ficc/registro/">Crear un nuevo usuario</a></li>
+                <li><a href="/ficc/admin/password_change/">Cambiar Contrase&ntilde;a del usuario actual</a></li>
+                <li><a href="/ficc/ver_logs">Ver logs</a></li>
+            </ul>
+        </li>
+        
+        
+    </ul>
+    <br></br>
+    <div id="content" align="center">
+    <h1>Registro</h1>
+	<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr valign="top">
+				<td width="99%" valign="top">
+					<table width="100%" cellpadding="2">
+						<tbody>
+							<tr valign="bottom">
+								<td>
+									<div align="center"></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+								{% if new_user %}
+									<!--img src="/media/img/webpage/ok.png" border="0" width="32" height="32" align="left" -->
+                                    <div align="center">
+                                    <table align="center" style="float:center;border:3px solid red;">
+                                    <td align="center" width="500">Registro correcto, ahora puede iniciar sesion con el nuevo usuario desconectandose primero de este usuario siguiendo el siguiente enlace:</td>
+                                    <tr>
+                                    <td align="center" width="500"><a href="/ficc/logout/">Desconectarse de {{nombreuser}}</a></td>
+                                    <tr>
+                                    </TABLE>
+                                    <br>
+                                    </div>
+								{% endif %}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table width="94%" align="center" cellpadding="5" cellspacing="0">
+		<tbody>
+			<tr>
+				<td width="20%" valign="top">
+					<font size="-1">
+						<table border="0" cellpadding="0" cellspacing="0" width="%90" >
+						</table>
+					</font>
+				</td>
+				<td>					
+						<form action="." method="post" id="register-form">
+						<table cellspacing="2" cellpadding="0" width="100%" border="0">		
+								<td valign="top" style="text-align:center" nowrap="nowrap">
+								<table align="center" border="0" cellpadding="2" cellspacing="10">
+								<tbody>
+                                    <td colspan="2">
+                                    <p><b>Campos obligatorios: nombre de usuario y contrase&ntilde;a</b></p>
+                                    </td>
+                                    <tr>
+                                    <td colspan="2">
+                                    <!--p>Los demas campos son opcionales, pero ayudaran<br> a restablecer su contrase&ntilde;a en caso que la olvide</p-->
+                                    </td>
+                                    <tr>
+                                    <td colspan="2">
+                                    {% if error_msj %}
+                                        <div align="center">
+                                        <table align="center" style="float:center;border:3px solid red;">
+                                        <td align="center" width="100">{{ error_msj }}</td>
+                                        <tr>
+                                        </TABLE>
+                                        <br>
+                                        </div>
+                                    {% endif %}
+                                    </td>
+                                    </tr>
+									<tr id="username-row">
+										<td nowrap="nowrap">
+											<div align="right">
+												<span class="widpylabel"><font size="4">Nombre de usuario:</font></span>
+											</div>
+										</td>
+										<td>
+											{{ form.username }}
+										</td>
+									</tr>
+
+									<tr id="firstanme-row">
+										<td nowrap="nowrap">
+											<div align="right">
+												<span class="widpylabel"><font size="4">Nombre:</font></span>
+											</div>
+										</td>
+										<td>
+											{{ form.first_name }}
+										</td>
+									</tr>
+
+									<tr id="last_name-row">
+										<td nowrap="nowrap">
+											<div align="right">
+												<span class="widpylabel"><font size="4">Apellido:</font></span>
+											</div>
+										</td>
+										<td>
+											{{ form.last_name }}
+										</td>
+									</tr>
+									
+									<tr id="password1-row">
+										<td nowrap="nowrap">
+											<div align="right">
+												<span class="widpylabel"><font size="4">Contrase&ntilde;a:</font></span>
+											</div>
+										</td>
+										<td>
+											{{ form.password1 }}
+										</td>
+									</tr>
+
+									<tr id="password2-row">
+										<td nowrap="nowrap">
+											<div align="right">
+												<span class="widpylabel"><font size="4">Repetir contrase&ntilde;a:</font></span>
+											</div>
+										</td>
+										<td>
+											{{ form.password2 }}
+										</td>
+									</tr>
+									
+									<tr>
+										<td></td>
+										<td align="left">
+											<input type="hidden" name="registrar" value="registrar"/>
+											<input type="submit" class="register" value="Registrar" />
+										</td>
+									</tr>	
+
+								</tbody>
+								</table>							
+								</td>
+								</tr>
+							</table>
+						</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br><br><br><br>
+	<div align="center" id="top_bar">
+	<table width="95%" align="center" cellpadding="3" cellspacing="0" style="margin-bottom:5">
+			<tr>
+				<!--font size=-1 color=#666666>&copy;2010 Widpy
+				</font-->
+			</tr>
+	</table>
+	</div>
+<br>
+</html>

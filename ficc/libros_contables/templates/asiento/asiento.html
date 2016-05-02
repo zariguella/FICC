@@ -1,0 +1,463 @@
+{% extends "lumino/base.html" %} 
+{% block title %}Planilla Egresos{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+var cal1xx = new CalendarPopup("testdiv1");
+        cal1xx.showNavigationDropdowns();
+        document.write(getCalendarStyles());
+        writeSource("jscal1xx");
+        
+        function validar(e) { // 1
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla==8) return true; //Tecla de retroceso (para poder borrar)
+            if (tecla==0) return true;
+            patron = /[1234567890.-]/;// Solo acepta numeros y el punto y el guion
+
+            te = String.fromCharCode(tecla);
+            return patron.test(te); 
+        } 
+        
+        function verificarsuma(frm){
+            var sumadebe=0, sumahaber=0;
+
+            for(i=1;i<=12;i++){
+                if(frm['d'+i].value == ''){
+                    frm['d'+i].value = 0;
+                }
+                if(frm['h'+i].value == ''){
+                    frm['h'+i].value = 0;
+                }
+            }
+            for(i=1;i<=12;i++){
+                sumadebe = sumadebe + parseFloat(frm['d'+i].value);
+                sumahaber = sumahaber + parseFloat(frm['h'+i].value);
+            }
+            if (sumadebe != sumahaber){
+                alert('Las sumas no coinciden');
+				frm.boton.disabled = true;
+            }else{
+                frm['totald'].value = sumadebe;
+                frm['totalh'].value = sumadebe;
+                frm.boton.disabled = false;
+                //document.formu.submit();
+            }
+        }
+        
+        function verificarcampos(frm){
+             if(frm['date1xx'].value == ""){
+                alert("Ingrese fecha del documento");
+                return 0;
+            }
+            
+            for(i=1;i<=12;i++){
+                if(frm['d'+i].value != 0){
+                    if(frm['cd'+i].value == ''){
+                        alert("Complete el tipo de cuenta")
+                        return 0;
+                    }
+                }
+                if(frm['h'+i].value != 0){
+                    if(frm['ch'+i].value == ''){
+                        alert("Complete el tipo de cuenta")
+                        return 0;
+                    }
+                }
+                
+            }
+            if(frm['comentarios'].value.length >= 101 ) {
+                alert("Se permiten hasta 100 caracteres para comentarios")
+                return 0;
+            }
+            document.formu.submit();
+        }
+</script>
+{% endblock %}
+{% block titulo %}Cargar Nuevo Asiento{% endblock %}
+ 
+{% block content %}
+	<div id="content" align="center">
+{% if msj %}
+			<table align="center" style="float:center;border:3px solid red;">
+			<td align="center" width="500">{{msj}}</td>
+            <tr>
+            </TABLE>
+            <br>
+{% endif %}
+<FORM action="/ficc/cargar_asiento/" METHOD="GET" name="formu">
+<table align="center" border="0">
+<td align="right" width="200">Fecha:
+</td>
+
+<td align="left" width="200"><input name="date1xx" value="" type="text"><a href="#" onclick="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" title="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" name="anchor1xx" id="anchor1xx">Elegir</a>
+</td>
+
+<tr>
+<br>
+</table>
+<table align="center" border="0">
+<tr>
+<td align='left' width='20'><b>Debe</b></td><td align='left' width='20'>Monto</td><td align='left' width='20'><b>Haber</b></td><td align='left' width='20'>Monto</td><tr>
+<td align='left' width='150'><select name="cd1" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d1" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch1" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h1" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd2" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d2" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch2" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h2" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd3" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d3" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch3" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h3" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd4" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d4" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch4" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h4" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd5" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d5" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch5" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h5" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd6" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d6" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch6" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h6" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd7" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d7" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch7" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h7" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd8" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d8" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch8" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h8" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd9" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d9" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch9" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h9" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd10" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d10" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch10" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h10" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd11" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d11" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch11" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h11" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+<tr>
+<td align='left' width='150'><select name="cd12" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentasd %}
+                                {% for i in listcuentasd %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="d12" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td><td align='left' width='150'><select name="ch12" id="id_pro" onchange="poner_ruc(this.value);">
+
+                            <option value="" selected="selected">---------</option>
+                            {% if listcuentash %}
+                                {% for i in listcuentash %}
+                                    <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                            <!--option value="d">Debe</option>
+                            <option value="h">Haber</option>
+                            <option value="h4">Fer</option-->
+</select></td>
+<td align="center" width="150"><INPUT NAME="h12" TYPE="TEXT" VALUE="" onkeypress="return validar(event);">
+</td>
+
+</table>
+<table align="center" border="0">
+
+<td align='left' width='150'>Total</td>
+<td align="center" width="150"><INPUT NAME="totald" TYPE="TEXT" VALUE="">
+</td><td align="center" width="150"></td>
+<td align="center" width="150"><INPUT NAME="totalh" TYPE="TEXT" VALUE="">
+</td>
+<tr>
+<tr>
+<br>
+<td align="center" width="150"></td>
+<TD align="left" width="150">Comentarios</TD>
+	<TD>
+	<TEXTAREA rows="3" name="comentarios" value="">
+	</TEXTAREA>
+<tr>
+<td align="center" width="150"></td><td align="center" width="150"><INPUT NAME="botons" type="button" id="butsum" VALUE="Sumar" onclick="verificarsuma(this.form);"></td>
+<td align="center" width="150"><INPUT NAME="boton" type="button" id="butenv" VALUE="Enviar" disabled="disabled" onclick="verificarcampos(this.form);">
+</td>
+</table>
+
+
+
+</FORM>
+<tr>
+</div>
+{% endblock %}

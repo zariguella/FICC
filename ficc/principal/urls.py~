@@ -1,0 +1,9 @@
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    url(r'^inicio/', views.index, name='index'),
+    url(r'^ver_logs/', views.update_asientos, name='ver_logs'),
+]

@@ -1,11 +1,11 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
-from obispado.ingresos.models import *
-from obispado.aportantes.models import *
-from obispado.libros_contables.models import *
-from obispado.usuarios.forms import *
-from obispado.plan_de_cuentas.models import *
+from ingresos.models import *
+from aportantes.models import *
+from libros_contables.models import *
+from usuarios.forms import *
+from plan_de_cuentas.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 import datetime, string
 import time
@@ -35,7 +35,7 @@ def random_pass(chars, length):
 def login_up(request, error_message=''):
     form = RegisterForm()   
     if request.session.get('has_login',False):
-        return HttpResponseRedirect('/obispado/')	
+        return HttpResponseRedirect('/ficc/')	
     if request.method == 'POST':
         registrar = request.POST.get('registrar','')
         if registrar!='registrar':
@@ -45,22 +45,20 @@ def login_up(request, error_message=''):
             if user is not None and user.is_active:
                 login(request, user)
                 request.session['has_login'] = True
-                #if next:
-                #	return HttpResponseRedirect(next)    
                 fecha = time.strptime(str(date.today()), "%Y-%m-%d")
-                #path = "C:/Contabilidad/logs/Contabilidad/obispado/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-                path = "C:/Contabilidad/logs/bitacora_obispado_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+                path = "./bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
                 archivo = open(path, "a")
                 escribir = "El usuario " + username + " inicio sesion el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
                 archivo.write(escribir)
                 archivo.close()
                 
-                return HttpResponseRedirect('/obispado/')
+                return HttpResponseRedirect('/inicio/')
             else:
                 
-                return render_to_response('usuarios/loginnew.html',{'error_message': 'Contrasenha o Nombre de usuario incorrecto','form': form})	
+                return render_to_response('lumino/login.html',{'error_message': 'Contrasenha o Nombre de usuario incorrecto','form': form}, context_instance = RequestContext(request))	
     else:
-        return render_to_response('usuarios/loginnew.html',{'form': form})
+        
+        return render_to_response('lumino/login.html',{'form': form}, context_instance = RequestContext(request))
 	
 def registrarse(request):
     user_id = request.user.id
@@ -94,7 +92,7 @@ def registrarse(request):
         else:
             return render_to_response('usuarios/registro.html',{'nombreuser': tipouser.username,'form': form})
     else:
-        return HttpResponseRedirect('/obispado/login/')
+        return HttpResponseRedirect('/ficc/login/')
     
 def logged_out(request):
     user_id = request.user.id
@@ -106,14 +104,14 @@ def logged_out(request):
     except KeyError:
         pass
     fecha = time.strptime(str(date.today()), "%Y-%m-%d")
-    #path = "C:/Contabilidad/logs/Contabilidad/obispado/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-    path = "C:/Contabilidad/logs/bitacora_obispado_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+    #path = "C:/Contabilidad/logs/Contabilidad/ficc/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
+    path = "C:/Contabilidad/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
     archivo = open(path, "a")
     escribir = "El usuario " + tipouser.username + " cerro sesion el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
     archivo.write(escribir)
     archivo.close()
                 
-    return HttpResponseRedirect('/obispado/login/')
+    return HttpResponseRedirect('/ficc/login/')
     
 def random_pass(chars, length):
 	import random,string
@@ -142,8 +140,8 @@ def recovery(request):
                 user_new_pass.set_password(new_pass) 
                 user_new_pass.save()
                 send_mail("Contrasenha solicitada por el usuario","""El sistema de contabilidad te envia tus datos para poder acceder al sistema \n\nNombre de usuario: %s\nContrasenha :%s\n\nIngresa a editar perfil en el sistema de contabilidad para cambiar tu contrasenha.\nSistema de Contabilidad.""" %(user[0].username,new_pass),'sistema.decontabilidad@gmail.com',[user[0].email], fail_silently=False)
-            return HttpResponseRedirect('/obispado/login/')
+            return HttpResponseRedirect('/ficc/login/')
         else:
             return render_to_response('usuarios/recuperar.html',{'nombreuser': tipouser.username})
     else:
-        return HttpResponseRedirect('/obispado/login/')
+        return HttpResponseRedirect('/ficc/login/')

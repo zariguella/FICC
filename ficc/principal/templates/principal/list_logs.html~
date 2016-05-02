@@ -1,0 +1,26 @@
+{% extends "lumino/base.html" %}
+ 
+{% block title %}Agregar Egreso{% endblock %}
+{% block scripts %}{% endblock %}
+{% block titulo %}Cargar Nuevo Egreso{% endblock %}
+ 
+{% block contenido %}
+<div id="content" align="center">
+	<h1>Lista de bitacoras</h1>
+        <br></br>
+        {% if cant %}
+            <ul>
+            {% for v in listbit %}
+                <li>{{v}}</li><br>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        <br>
+        <p><b>Se puede visualizar los archivos desde la carpeta que los almacena</b></p>
+        <h2>
+        <div id="content" align="left">
+        
+		</h2>
+        </div>		
+</div>
+{% endblock %}

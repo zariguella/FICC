@@ -1,0 +1,263 @@
+{% extends "lumino/base.html" %}
+ 
+{% block title %}Agregar Ingreso{% endblock %}
+{% block titulo %}Lista de ingresos{% endblock %}
+ 
+{% block content %}
+	<div id="content" align="center">
+        <H3 align="center">{{msj}}</H3> 
+        <FORM action="/obispado/ingresos_list/" METHOD="GET" name="formu">
+            <h3>Filtrar ingresos</h3>
+            <p>Para buscar una entrada <br></br>llene cualquiera de los campos y oprima el boton filtrar</p>
+            <table align="center" border="0" cellpadding="10">
+                <tr>
+                    <td align="left" width="200">Fecha:</td>
+                    <td align="left" width="200">
+                        <input name="date1xx" value="" type="text">
+                            <a href="#" onclick="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" title="cal1xx.select(document.forms[0].date1xx,'anchor1xx','dd/MM/yyyy'); return false;" name="anchor1xx" id="anchor1xx">Elegir</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" width="200">Nro Documento/Factura:
+                    </td>
+                    <td align="left" width="200"><INPUT NAME="nrofac" TYPE="TEXT" VALUE="">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" width="200">Aportante:</td>
+                    <td align="left" width="200">                            
+                        <select name="ap" id="id_ap" onchange="poner_ruc(this.value);">
+                            <option value="" selected="selected">---------</option>
+                                {% if apo %}
+                                    {% for i in apo %}
+                                        <option value="{{ i.id }}">{{ i.nombre }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                                <!--option value="d">Debe</option>
+                                <option value="h">Haber</option>
+                                <option value="h4">Fer</option-->
+                        </select>
+                        <!--td align="center" width="150"><INPUT NAME="ap" TYPE="TEXT" VALUE=""-->
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" width="150">
+                        <INPUT NAME="boton" type="button" id="butenv" VALUE="Filtrar" onclick="verificar(this.form);">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div id="tabla_borde" align="center">
+            <table align="center" BORDER="1">
+                <tr>
+                    <td align='left' width='220'><b>Fecha:</b></td>
+                    <td align='left' width='220'><b>Aportante:</b></td>
+                    <td align='left' width='100'><b>Numero Documento:</b></td>
+                    <td align='left' width='100'><b>Tipo de Documento:</b></td>
+                    <td align='left' width='850'><b>Cuenta:</b></td>
+                    <td align='left' width='180'><b>Monto:</b></td>
+                    <td align='left' width='80'><b></b></td>
+                </tr>
+                <tr>
+                    {% if cant %}
+                        {% for f in ltot.object_list %}
+                                <td>{{f.fecha}}</td>
+                                <td>{{f.aportante}}</td>
+                                <td>{{f.nro_fac}}</td>
+                                <td>{{f.tipo_doc}}</td>
+                                <td>{{f.cuenta}}</td>
+                                <td>{{f.monto}}</td>
+                                <td><a href="/obispado/ingresos_edit/{{f.id}}">Editar</a></td><tr>
+                        {% endfor %}
+                    {% endif %}
+                </tr>
+            </table>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if ltot.has_previous %}
+                    <a href="?page={{ ltot.previous_page_number }}">anterior</a>
+                {% endif %}
+
+                <span class="current">
+                    P&aacute;gina {{ ltot.number }} de {{ ltot.paginator.num_pages }}.
+                </span>
+
+                {% if ltot.has_next %}
+                    <a href="?page={{ ltot.next_page_number }}">siguiente</a>
+                {% endif %}
+            </span>
+        </div>
+        <script type="text/javascript" src="/media/js/CalendarPopup.js"></script>
+
+        <script type="text/javascript">
+                
+                var aportantes = new Array;
+                var cuentas = new Array;
+                function validar(e) { // 1
+                    tecla = (document.all) ? e.keyCode : e.which;
+                    if (tecla==8) return true; //Tecla de retroceso (para poder borrar)
+                    if (tecla==0) return true;
+                    patron = /[1234567890.-]/;// Solo acepta numeros y el punto
+
+                    te = String.fromCharCode(tecla);
+                    return patron.test(te); 
+                } 
+
+                //alert('as');
+                function sumex(frm, n){
+                    var exenta;
+                    if(frm['cant'+n].value!="" && frm['pu'+n].value!=""){
+                        exenta = parseFloat(frm['cant'+n].value) * parseFloat(frm['pu'+n].value)
+                        frm['ex'+n].value = exenta;
+                    }
+                    else{
+                        frm['ex'+n].value = 0;
+                    }
+                    //alert(exenta);
+                }
+                
+                function sumar(){
+                    //alert('hola');
+                    var sum=0;
+                    var uno=0;
+                    for(i=1;i<=10;i++){
+                        if(frm['ex'+i].value == ''){
+                            frm['ex'+i].value = 0;
+                        }else if(frm['cant'+i].value =='' && frm['pu'+i].value=='' && frm['ex'+i].value!=0){
+                            alert("No se ha especificado cantidad y/o precio unitario en la fila "+i)
+                            return false;
+                        }
+                    }
+                    var1=parseFloat(document.formu.ex1.value);
+                    var2=parseFloat(document.formu.ex2.value);
+                    var3=parseFloat(document.formu.ex3.value);
+                    var4=parseFloat(document.formu.ex4.value);
+                    var5=parseFloat(document.formu.ex5.value);
+                    var6=parseFloat(document.formu.ex6.value);
+
+                    var7=parseFloat(document.formu.ex7.value);
+                    var8=parseFloat(document.formu.ex8.value);
+                    var9=parseFloat(document.formu.ex9.value);
+                    var10=parseFloat(document.formu.ex10.value);
+                    sum = var1+var2+var3+var4+var5+var6+var7+var8+var9+var10;
+                    //alert(uno);
+                    document.getElementById('tot').value=sum;
+                    if(sum>0){
+                        document.formu.boton.disabled = false;
+                    }else{
+                        document.formu.boton.disabled = true;
+                    }
+                    
+                    //alert('hola');
+                }
+                 function ValidarFecha(Cadena){  
+                     var Fecha= new String(Cadena)   // Crea un string  
+                     var RealFecha= new Date()   // Para sacar la fecha de hoy  
+                     // Cadena Anho  
+                     var Ano= new String(Fecha.substring(Fecha.lastIndexOf("/")+1,Fecha.length))  
+                     // Cadena Mes  
+                     var Mes= new String(Fecha.substring(Fecha.indexOf("/")+1,Fecha.lastIndexOf("/")))  
+                     // Cadena Dia  
+                     var Dia= new String(Fecha.substring(0,Fecha.indexOf("/")))  
+
+                     /*var Dia= new String(Fecha.substring(Fecha.lastIndexOf("/")+1,Fecha.length))  
+
+                     var Mes= new String(Fecha.substring(Fecha.indexOf("/")+1,Fecha.lastIndexOf("/")))  
+
+                     var Ano= new String(Fecha.substring(0,Fecha.indexOf("/")))*/
+                   
+                     // Valido el anho  
+                     if (isNaN(Ano) || Ano.length<4 || parseFloat(Ano)<1900){  
+                             alert('Fecha invalida')  
+                         return false  
+                     }  
+                     // Valido el Mes  
+                     if (isNaN(Mes) || parseFloat(Mes)<1 || parseFloat(Mes)>12){  
+                         alert('Mes invalido')  
+                         return false  
+                     }  
+                     // Valido el Dia  
+                     if (isNaN(Dia) || parseInt(Dia, 10)<1 || parseInt(Dia, 10)>31){  
+                         alert('Dia invalido')  
+                         return false  
+                     }  
+                     if (Mes==4 || Mes==6 || Mes==9 || Mes==11 || Mes==2) {  
+                         if (Mes==2 && Dia > 28 || Dia>30) {  
+                             alert('Dia invalido')  
+                             return false  
+                         }  
+                     }  
+                       
+                   //para que envie los datos, quitar las  2 lineas siguientes  
+                   //alert("Fecha correcta.")  
+                    return true    
+                 }  
+                 function inicializar(){
+                    //alert('la0');
+                    
+                    var i=0;
+                    //alert('la');
+                    
+                    {% for ip in apo %}
+                        aportantes[i]="{{ip.ruc}}";
+                        i++;
+                    {% endfor %}
+                    i=0;
+                    {% for ip1 in con %}
+                        cuentas[i]="{{ip1.tipo_de_iva}}";
+                        i++;
+                    {% endfor %}
+                    //alert(aportantes[0]);
+                    /*for (i=0;i<10;i++){
+
+                        proveedores[i]={{
+                    } */
+                }
+                 function poner_ruc(num){
+                    
+                    if(num.selectedIndex != 0){
+                        if(num != ""){
+                            document.getElementById('ruc').value=aportantes[num-1];
+                        }else{
+                            document.getElementById('ruc').value="";
+                        }
+                        
+                    }
+                }
+                
+                function verificar(frm){
+                    /*if(frm['ap'].value == ""){
+                        //nopasa=1;
+
+                        //
+                        alert("Ingrese nombre de aportante");
+                        return 0;
+
+                    }
+                    if(frm['date1xx'].value == ""){
+                        alert("Ingrese fecha del documento");
+                        return 0;
+                    }
+                    if(frm['nrofac'].value == ""){
+
+                        alert("Ingrese numero de factura");
+                        return 0;
+                    }*/
+                    if(frm['date1xx'].value != ""){
+                        if(ValidarFecha(frm['date1xx'].value)){
+                            //frm['boton'].submit();
+                            //frm['formu'].submit();
+                            document.formu.submit();
+                        }
+                    }else{
+                        document.formu.submit();
+                    }
+                }
+                var cal1xx = new CalendarPopup("testdiv1");
+                cal1xx.showNavigationDropdowns();
+                document.write(getCalendarStyles());
+                writeSource("jscal1xx");
+        </script>
+    </div>
+{% endblock %}

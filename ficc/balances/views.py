@@ -1,8 +1,8 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import *
-from .models import *
+from libros_contables.models import *
+from plan_de_cuentas.models import *
 from django.contrib.auth.models import User
 import time
 import csv
@@ -30,7 +30,7 @@ def index(request):
         }
         return HttpResponse(template.render(context, request))
     else:
-        return HttpResponseRedirect('/ficc/login/')
+        return HttpResponseRedirect('/login/')
 
 def generar_balance(request):
     user_id = request.user.id
@@ -45,7 +45,7 @@ def generar_balance(request):
         balance = generar_balance2(fechaisoini, fechaisofin) # como se podria llamar mejor a esta funcion? deberia llamarse desde ver_balance, o algo asi
 
         # Create the HttpResponse object with the appropriate CSV header.
-        response = HttpResponse(mimetype='text/csv')
+        response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=balance.csv'
 
         writer = csv.writer(response, delimiter=';')
@@ -83,4 +83,4 @@ def generar_balance(request):
 
         return response
     else:
-        return HttpResponseRedirect('/ficc/login/')
+        return HttpResponseRedirect('/login/')
