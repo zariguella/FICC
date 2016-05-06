@@ -1,0 +1,162 @@
+[Thu May 05 17:15:14.770561 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116] mod_wsgi (pid=4224): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:15:14.770647 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116] mod_wsgi (pid=4224): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:15:14.770671 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116] Traceback (most recent call last):
+[Thu May 05 17:15:14.770693 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:15:14.770753 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]     application = get_wsgi_application()
+[Thu May 05 17:15:14.770766 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:15:14.770808 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]     django.setup()
+[Thu May 05 17:15:14.770821 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:15:14.770862 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:15:14.770874 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:15:14.770954 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]     self._setup(name)
+[Thu May 05 17:15:14.770966 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:15:14.770984 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:15:14.770995 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:15:14.771013 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:15:14.771023 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:15:14.771067 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116]     __import__(name)
+[Thu May 05 17:15:14.771086 2016] [:error] [pid 4224:tid 3057646400] [client 127.0.0.1:50116] ImportError: No module named ficc.settings
+[Thu May 05 17:16:51.970725 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117] mod_wsgi (pid=4224): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:16:51.970765 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117] mod_wsgi (pid=4224): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:16:51.970788 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117] Traceback (most recent call last):
+[Thu May 05 17:16:51.970810 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:16:51.970877 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]     application = get_wsgi_application()
+[Thu May 05 17:16:51.970891 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:16:51.970912 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]     django.setup()
+[Thu May 05 17:16:51.970924 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:16:51.970955 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:16:51.970966 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:16:51.970986 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]     self._setup(name)
+[Thu May 05 17:16:51.970996 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:16:51.971013 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:16:51.971024 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:16:51.971040 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:16:51.971051 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:16:51.971069 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117]     __import__(name)
+[Thu May 05 17:16:51.971087 2016] [:error] [pid 4224:tid 2931755840] [client 127.0.0.1:50117] ImportError: No module named ficc.settings
+[Thu May 05 17:16:53.081870 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118] mod_wsgi (pid=4223): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:16:53.081919 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118] mod_wsgi (pid=4223): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:16:53.081956 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118] Traceback (most recent call last):
+[Thu May 05 17:16:53.081984 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:16:53.082072 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]     application = get_wsgi_application()
+[Thu May 05 17:16:53.082086 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:16:53.082130 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]     django.setup()
+[Thu May 05 17:16:53.082144 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:16:53.082187 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:16:53.082199 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:16:53.082283 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]     self._setup(name)
+[Thu May 05 17:16:53.082295 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:16:53.082315 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:16:53.082327 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:16:53.082344 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:16:53.082366 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:16:53.082411 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118]     __import__(name)
+[Thu May 05 17:16:53.082432 2016] [:error] [pid 4223:tid 3057646400] [client 127.0.0.1:50118] ImportError: No module named settings
+[Thu May 05 17:16:53.809655 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119] mod_wsgi (pid=4224): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:16:53.809694 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119] mod_wsgi (pid=4224): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:16:53.809717 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119] Traceback (most recent call last):
+[Thu May 05 17:16:53.809740 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:16:53.809771 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]     application = get_wsgi_application()
+[Thu May 05 17:16:53.809785 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:16:53.809806 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]     django.setup()
+[Thu May 05 17:16:53.809818 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:16:53.809835 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:16:53.809846 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:16:53.809865 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]     self._setup(name)
+[Thu May 05 17:16:53.809876 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:16:53.809894 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:16:53.809905 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:16:53.809921 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:16:53.809932 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:16:53.809949 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119]     __import__(name)
+[Thu May 05 17:16:53.809970 2016] [:error] [pid 4224:tid 2923363136] [client 127.0.0.1:50119] ImportError: No module named ficc.settings
+[Thu May 05 17:16:55.214251 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120] mod_wsgi (pid=4223): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:16:55.214298 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120] mod_wsgi (pid=4223): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:16:55.214322 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120] Traceback (most recent call last):
+[Thu May 05 17:16:55.214345 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:16:55.214377 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]     application = get_wsgi_application()
+[Thu May 05 17:16:55.214401 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:16:55.214421 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]     django.setup()
+[Thu May 05 17:16:55.214433 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:16:55.214450 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:16:55.214462 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:16:55.214480 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]     self._setup(name)
+[Thu May 05 17:16:55.214491 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:16:55.214508 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:16:55.214518 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:16:55.214535 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:16:55.214546 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:16:55.214563 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120]     __import__(name)
+[Thu May 05 17:16:55.214584 2016] [:error] [pid 4223:tid 3049253696] [client 127.0.0.1:50120] ImportError: No module named settings
+[Thu May 05 17:17:02.885959 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121] mod_wsgi (pid=4366): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:17:02.886010 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121] mod_wsgi (pid=4366): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:17:02.886032 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121] Traceback (most recent call last):
+[Thu May 05 17:17:02.886051 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:17:02.886109 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]     application = get_wsgi_application()
+[Thu May 05 17:17:02.886121 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:17:02.886163 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]     django.setup()
+[Thu May 05 17:17:02.886176 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:17:02.886216 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:17:02.886228 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:17:02.886307 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]     self._setup(name)
+[Thu May 05 17:17:02.886318 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:17:02.886337 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:17:02.886361 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:17:02.886379 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:17:02.886390 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:17:02.886434 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121]     __import__(name)
+[Thu May 05 17:17:02.886453 2016] [:error] [pid 4366:tid 3008338752] [client 127.0.0.1:50121] ImportError: No module named settings
+[Thu May 05 17:24:50.951274 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202] mod_wsgi (pid=4367): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:24:50.951347 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202] mod_wsgi (pid=4367): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:24:50.951374 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202] Traceback (most recent call last):
+[Thu May 05 17:24:50.951396 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:24:50.951457 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]     application = get_wsgi_application()
+[Thu May 05 17:24:50.951471 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:24:50.951514 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]     django.setup()
+[Thu May 05 17:24:50.951529 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:24:50.951571 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:24:50.951584 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:24:50.951664 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]     self._setup(name)
+[Thu May 05 17:24:50.951678 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:24:50.951698 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:24:50.951710 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:24:50.951729 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:24:50.951741 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:24:50.951786 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202]     __import__(name)
+[Thu May 05 17:24:50.951807 2016] [:error] [pid 4367:tid 3058694976] [client 127.0.0.1:50202] ImportError: No module named ficc.ficc.settings
+[Thu May 05 17:26:03.906875 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203] mod_wsgi (pid=4367): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:26:03.906919 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203] mod_wsgi (pid=4367): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:26:03.906951 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203] Traceback (most recent call last):
+[Thu May 05 17:26:03.906974 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:26:03.907043 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]     application = get_wsgi_application()
+[Thu May 05 17:26:03.907057 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:26:03.907078 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]     django.setup()
+[Thu May 05 17:26:03.907090 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:26:03.907108 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:26:03.907120 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:26:03.907138 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]     self._setup(name)
+[Thu May 05 17:26:03.907149 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:26:03.907167 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:26:03.907178 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:26:03.907196 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:26:03.907207 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:26:03.907225 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203]     __import__(name)
+[Thu May 05 17:26:03.907245 2016] [:error] [pid 4367:tid 3050302272] [client 127.0.0.1:50203] ImportError: No module named ficc.ficc.settings
+[Thu May 05 17:26:06.490314 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204] mod_wsgi (pid=4367): Target WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py' cannot be loaded as Python module.
+[Thu May 05 17:26:06.490373 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204] mod_wsgi (pid=4367): Exception occurred processing WSGI script '/var/www/html/ficc/ficc/ficc/wsgi.py'.
+[Thu May 05 17:26:06.490399 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204] Traceback (most recent call last):
+[Thu May 05 17:26:06.490424 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]   File "/var/www/html/ficc/ficc/ficc/wsgi.py", line 16, in <module>
+[Thu May 05 17:26:06.490460 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]     application = get_wsgi_application()
+[Thu May 05 17:26:06.490475 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]   File "/usr/local/lib/python2.7/dist-packages/django/core/wsgi.py", line 13, in get_wsgi_application
+[Thu May 05 17:26:06.490497 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]     django.setup()
+[Thu May 05 17:26:06.490509 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]   File "/usr/local/lib/python2.7/dist-packages/django/__init__.py", line 17, in setup
+[Thu May 05 17:26:06.490529 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+[Thu May 05 17:26:06.490540 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 55, in __getattr__
+[Thu May 05 17:26:06.490575 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]     self._setup(name)
+[Thu May 05 17:26:06.490587 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 43, in _setup
+[Thu May 05 17:26:06.490608 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]     self._wrapped = Settings(settings_module)
+[Thu May 05 17:26:06.490619 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]   File "/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py", line 99, in __init__
+[Thu May 05 17:26:06.490637 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]     mod = importlib.import_module(self.SETTINGS_MODULE)
+[Thu May 05 17:26:06.490649 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]   File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+[Thu May 05 17:26:06.490667 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204]     __import__(name)
+[Thu May 05 17:26:06.490690 2016] [:error] [pid 4367:tid 3041909568] [client 127.0.0.1:50204] ImportError: No module named ficc.ficc.settings

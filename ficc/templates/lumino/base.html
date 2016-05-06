@@ -5,17 +5,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}Sistema contabilidad{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/bootstrap-table.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/bootstrap.min.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/datepicker3.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'archivos/css/styles.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'lumino/css/bootstrap-table.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'lumino/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'lumino/css/datepicker3.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'lumino/css/styles.css' %}" />
 {% block extrastyle %}{% endblock %}
 
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 <!--Icons-->
-<script src="{% static 'archivos/js/lumino.glyphs.js' %}"></script>
-<script type="text/javascript" src="{% static 'archivos/js/CalendarPopup.js' %}"></script>
+<script src="{% static 'lumino/js/lumino.glyphs.js' %}"></script>
+<script type="text/javascript" src="{% static 'lumino/js/CalendarPopup.js' %}"></script>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -193,13 +193,13 @@
 		</div><!--/.row-->		
 	</div>	<!--/.main-->
 
-	<script src="{% static 'archivos/js/jquery-1.11.1.min.js' %}"></script>
-	<script src="{% static 'archivos/js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'archivos/js/chart.min.js' %}"></script>
-	<script src="{% static 'archivos/js/chart-data.js' %}"></script>
-	<script src="{% static 'archivos/js/easypiechart.js' %}"></script>
-	<script src="{% static 'archivos/js/easypiechart-data.js' %}"></script>
-	<script src="{% static 'archivos/js/bootstrap-datepicker.js' %}"></script>
+	<script src="{% static 'lumino/js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'lumino/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'lumino/js/chart.min.js' %}"></script>
+	<script src="{% static 'lumino/js/chart-data.js' %}"></script>
+	<script src="{% static 'lumino/js/easypiechart.js' %}"></script>
+	<script src="{% static 'lumino/js/easypiechart-data.js' %}"></script>
+	<script src="{% static 'lumino/js/bootstrap-datepicker.js' %}"></script>
 	<script>
 		$('#calendar').datepicker({
 		});

@@ -92,7 +92,7 @@
 			</li> 
             <li>
 				<a class="" href="/admin/plan_de_cuentas/">
-					<svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Plan de Cuentas
+					<svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Plan de Cuentas
 				</a>
 			</li>   
             <li>
