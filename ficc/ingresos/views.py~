@@ -245,7 +245,7 @@ def update_ingresos(request):
             
             fecha = time.strptime(str(date.today()), "%Y-%m-%d")
             #path = "C:/Contabilidad/logs/Contabilidad/ficc/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-            path = "/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+            path = "logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
             archivo = open(path, "a")
             escribir = "El usuario " + tipouser.username + " ha modificado el ingreso con numero de documento: "+str(newingreso.numero_factura)+ " el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
             archivo.write(escribir)

@@ -109,7 +109,7 @@ def carga(request):
                     summonto = summonto + float(listex[i])
             #summonto = reduce(sumar, listex)
             #Cambiar a "Caja"
-            id_de_cuenta = CuentaNivel3.objects.get(nombre="Caja")
+            id_de_cuenta = CuentaNivel3.objects.get(nombre="1105 Caja")
             #cue = id_de_cuenta.count()
             newventaasiento = AsientoDebeDetalle(asiento_id = newasiento.id, cuenta_id =id_de_cuenta.id, monto = summonto)
             newventaasiento.save()

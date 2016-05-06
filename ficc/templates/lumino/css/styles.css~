@@ -818,44 +818,6 @@ h1.page-header {
 	margin-left: 5px;
 }
 
-/*Tables*/
-.table {
-	background: #fff;
-}
-
-.fixed-table-container {
-	border: 1px solid #eee;
-}
-
-.fixed-table-container thead th {
-	background: #f7f7f8;
-	border-color: #ddd;
-	color: #5f6468;
-	font-weight: 300;
-	font-size: 16px;
-}
-
-.fixed-table-container tbody td {
-	border: 1px solid #eee;
-}
-
-.fixed-table-container tbody td:last-child {
-	border-right: none;
-}
-
-.table>thead>tr>th {
-	border-bottom: 1px solid #e6e7e8;
-	vertical-align: middle;
-	height: 50px;
-}
-
-.fixed-table-pagination .pagination {
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
-.fixed-table-pagination .pagination-detail {
-	margin-top: 20px;
-}
 
 /*Icons*/
 
@@ -928,9 +890,9 @@ h1.page-header {
 	height: 65px;
 	overflow: scroll;
 }
-/*
-    DJANGO Admin styles @import url(fonts.css);
-*/
+
+
+
 
 ul li {
     list-style-type: square;
@@ -1803,6 +1765,14 @@ table#change-history tbody th {
 .popup #header {
     padding: 10px 20px;
 }
+
+
+
+
+
+
+
+
 
 
 
