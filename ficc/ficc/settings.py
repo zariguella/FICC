@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [    
+    'cartera.apps.CarteraConfig',
     'principal.apps.PrincipalConfig',    
     'aportantes.apps.AportantesConfig',
     'balances.apps.BalancesConfig',
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'inventario.apps.InventarioConfig',
     'impuestos.apps.ImpuestosConfig',
     'lugares.apps.LugaresConfig',
-    'cartera.apps.CarteraConfig',
     'pagos.apps.PagosConfig',
     'formas_de_pago.apps.FormasDePagoConfig',
     'django.contrib.admin',
