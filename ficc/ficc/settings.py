@@ -34,13 +34,21 @@ INSTALLED_APPS = [
     'principal.apps.PrincipalConfig',    
     'aportantes.apps.AportantesConfig',
     'balances.apps.BalancesConfig',
-    'egresos.apps.EgresosConfig',
-    'facturacion.apps.FacturacionConfig',
+    'egresos.apps.EgresosConfig',    
     'ingresos.apps.IngresosConfig',
     'libros_contables.apps.LibrosContablesConfig',
     'plan_de_cuentas.apps.PlanDeCuentasConfig',
     'proveedores.apps.ProveedoresConfig',
     'usuarios.apps.UsuariosConfig',
+    'facturacion.apps.FacturacionConfig',
+    'cierre_de_caja.apps.CierreDeCajaConfig',
+    'libro_diario.apps.LibroDiarioConfig',
+    'inventario.apps.InventarioConfig',
+    'impuestos.apps.ImpuestosConfig',
+    'lugares.apps.LugaresConfig',
+    'cartera.apps.CarteraConfig',
+    'pagos.apps.PagosConfig',
+    'formas_de_pago.apps.FormasDePagoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,5 +136,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_ROOT = '/var/www/ficc/ficc/templates'
+STATIC_ROOT = BASE_DIR+'/templates'
 STATIC_URL = '/static/'

@@ -23,6 +23,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 import datetime, string
 from django.contrib import auth
+from django.conf import settings
 
 import os.path
 
@@ -46,7 +47,7 @@ def login_up(request, error_message=''):
                 login(request, user)
                 request.session['has_login'] = True
                 fecha = time.strptime(str(date.today()), "%Y-%m-%d")
-                path = "/var/www/FICC/ficc/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+                path = settings.BASE_DIR+"/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
                 archivo = open(path, "a")
                 escribir = "El usuario " + username + " inicio sesion el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
                 archivo.write(escribir)
@@ -105,7 +106,7 @@ def logged_out(request):
         pass
     fecha = time.strptime(str(date.today()), "%Y-%m-%d")
     #path = "C:/Contabilidad/logs/Contabilidad/ficc/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-    path = "C:/Contabilidad/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+    path = settings.BASE_DIR+"/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
     archivo = open(path, "a")
     escribir = "El usuario " + tipouser.username + " cerro sesion el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
     archivo.write(escribir)
