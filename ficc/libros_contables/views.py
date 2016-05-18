@@ -73,7 +73,7 @@ def cargar_asiento(request):
                 debe.save()
             #cn3 = CuentaNivel3.objects.all()
             fecha = time.strptime(str(date.today()), "%Y-%m-%d")
-            path = "bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+            path = "/var/www/FICC/ficc/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
             archivo = open(path, "a")
             escribir = "El usuario " + tipouser.username + " cargo un asiento contable el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
             archivo.write(escribir)
@@ -337,7 +337,7 @@ def update_asientos(request):
             
             fecha = time.strptime(str(date.today()), "%Y-%m-%d")
             #path = "C:/Contabilidad/logs/Contabilidad/ficc/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-            path = "C:/Contabilidad/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+            path = "/var/www/FICC/ficc/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
             archivo = open(path, "a")
             escribir = "El usuario " + tipouser.username + " ha modificado el asiento con fecha: "+str(fechaiso)+ " el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
             archivo.write(escribir)
@@ -377,12 +377,12 @@ def update_asientos(request):
                 debe = AsientoDebeDetalle(asiento_id = newasiento.id, cuenta_id = int(cuentad[i]), monto = float(montod[i]))
                 debe.save()
             #cn3 = CuentaNivel3.objects.all()
-            return HttpResponseRedirect('/ficc/asientos_list/')
+            return HttpResponseRedirect('/asiento/asientos_list/')
             #return render_to_response('asiento/asiento.html', {'nombreuser': tipouser.username,'listcuentasd': listcuentasd, 'listcuentash':listcuentash, 'msj':'Asiento Cargado Correctamente'})
         else:
             #cn3 = CuentaNivel3.objects.all()
             return render_to_response('asiento/asiento.html', {'nombreuser': tipouser.username,'listcuentasd': listcuentasd, 'listcuentash':listcuentash})
         return render_to_response('asiento/asiento.html')
     else:
-        return HttpResponseRedirect('/ficc/login/')
+        return HttpResponseRedirect('/usuarios/login/')
         

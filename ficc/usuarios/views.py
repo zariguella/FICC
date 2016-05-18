@@ -46,7 +46,7 @@ def login_up(request, error_message=''):
                 login(request, user)
                 request.session['has_login'] = True
                 fecha = time.strptime(str(date.today()), "%Y-%m-%d")
-                path = "./bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+                path = "/var/www/FICC/ficc/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
                 archivo = open(path, "a")
                 escribir = "El usuario " + username + " inicio sesion el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
                 archivo.write(escribir)

@@ -45,11 +45,8 @@ def login_up(request, error_message=''):
             if user is not None and user.is_active:
                 login(request, user)
                 request.session['has_login'] = True
-                #if next:
-                #	return HttpResponseRedirect(next)    
                 fecha = time.strptime(str(date.today()), "%Y-%m-%d")
-                #path = "C:/Contabilidad/logs/Contabilidad/ficc/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-                path = "./bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+                path = "./logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
                 archivo = open(path, "a")
                 escribir = "El usuario " + username + " inicio sesion el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
                 archivo.write(escribir)
@@ -58,10 +55,10 @@ def login_up(request, error_message=''):
                 return HttpResponseRedirect('/inicio/')
             else:
                 
-                return render_to_response('usuarios/loginnew.html',{'error_message': 'Contrasenha o Nombre de usuario incorrecto','form': form}, context_instance = RequestContext(request))	
+                return render_to_response('lumino/login.html',{'error_message': 'Contrasenha o Nombre de usuario incorrecto','form': form}, context_instance = RequestContext(request))	
     else:
         
-        return render_to_response('usuarios/loginnew.html',{'form': form}, context_instance = RequestContext(request))
+        return render_to_response('lumino/login.html',{'form': form}, context_instance = RequestContext(request))
 	
 def registrarse(request):
     user_id = request.user.id

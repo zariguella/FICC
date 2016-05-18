@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'aportantes.apps.AportantesConfig',
     'balances.apps.BalancesConfig',
     'egresos.apps.EgresosConfig',
+    'facturacion.apps.FacturacionConfig',
     'ingresos.apps.IngresosConfig',
     'libros_contables.apps.LibrosContablesConfig',
     'plan_de_cuentas.apps.PlanDeCuentasConfig',
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'ficc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/var/www/FICC/ficc/db/db.sqlite3',
+        'NAME': BASE_DIR+'/db/db.sqlite3',
     }
 }
 

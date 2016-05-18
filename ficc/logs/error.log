@@ -1,0 +1,6 @@
+[Wed May 11 18:31:45.672408 2016] [:error] [pid 4190:tid 2864614208] [client 181.138.27.172:54802] mod_wsgi (pid=4190): Exception occurred processing WSGI script '/var/www/FICC/ficc/ficc/wsgi.py'., referer: http://181.138.27.172/usuarios/login/
+[Wed May 11 18:31:45.672546 2016] [:error] [pid 4190:tid 2864614208] [client 181.138.27.172:54802] IOError: failed to write data, referer: http://181.138.27.172/usuarios/login/
+[Fri May 13 05:45:23.534851 2016] [:error] [pid 19055:tid 2882448192] [client 181.138.27.172:3408] mod_wsgi (pid=19055): Exception occurred processing WSGI script '/var/www/FICC/ficc/ficc/wsgi.py'.
+[Fri May 13 05:45:23.584946 2016] [:error] [pid 19055:tid 2882448192] [client 181.138.27.172:3408] IOError: failed to write data
+[Sat May 14 12:52:11.577400 2016] [:error] [pid 19054:tid 2999946048] [client 181.138.27.172:3779] mod_wsgi (pid=19054): Exception occurred processing WSGI script '/var/www/FICC/ficc/ficc/wsgi.py'.
+[Sat May 14 12:52:11.594236 2016] [:error] [pid 19054:tid 2999946048] [client 181.138.27.172:3779] IOError: failed to write data

@@ -14,6 +14,7 @@ from datetime import date
 import csv
 from django.db.models import Count  
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.conf import settings
 
 from django.template import RequestContext
 
@@ -123,7 +124,7 @@ def carga(request):
             #con = CuentaNivel3.objects.all().order_by("id")
             fecha = time.strptime(str(date.today()), "%Y-%m-%d")
             #path = "C:/Contabilidad/logs/Contabilidad/ficc/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-            path = "logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+            path = settings.BASE_DIR+"/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
             archivo = open(path, "a")
             escribir = "El usuario " + tipouser.username + " cargo el ingreso del documento nro "+str(nrofac)+" el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
             archivo.write(escribir)
@@ -245,7 +246,7 @@ def update_ingresos(request):
             
             fecha = time.strptime(str(date.today()), "%Y-%m-%d")
             #path = "C:/Contabilidad/logs/Contabilidad/ficc/bitacora_mes_"+fecha[1]+"_"+fecha[0]+".log"
-            path = "logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
+            path = settings.BASE_DIR+"/logs/bitacora_ficc_mes_"+str(fecha[1])+"_"+str(fecha[0])+".log"
             archivo = open(path, "a")
             escribir = "El usuario " + tipouser.username + " ha modificado el ingreso con numero de documento: "+str(newingreso.numero_factura)+ " el " + str(fecha[2]) +"/"+str(fecha[1])+"/"+ str(fecha[0])+" a las "+str(time.strftime("%H:%M:%S")) + "\n"
             archivo.write(escribir)
@@ -476,7 +477,7 @@ def generar_planilla_csv_ingresos(request):
         datos_ingresos = generar_resumen_ingresos(fechaisoini, fechaisofin)
 
         # Create the HttpResponse object with the appropriate CSV header.
-        response = HttpResponse(mimetype='text/csv')
+        response = HttpResponse(content_type='text/csv')
         # en el filename tal vez podriamos poner la fecha_inicio fecha_fin como parte del nombre
         response['Content-Disposition'] = 'attachment; filename=planila_ingresos.csv'
 

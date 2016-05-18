@@ -4,6 +4,8 @@ from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 import datetime, string
 import os.path
+#from django.conf import settings
+
 def index(request):
     user_id = request.user.id
     is_auth = request.user.is_authenticated()
@@ -22,7 +24,7 @@ def ver_logs(request):
     listbit = []
     if(is_auth):
         tipouser = User.objects.get(id=user_id)
-        nombres = os.listdir("/logs/")
+        nombres = os.listdir(settings.BASE_DIR+"/logs/")
         for x in nombres:
             if x.find("bitacora") >=0:
                 listbit.append(x)
